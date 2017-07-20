@@ -11,7 +11,6 @@ const express = require('express')
   , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , port = 3005
-  // , io = require('socket.io')
   , app = express();
 
 
@@ -170,22 +169,6 @@ app.listen(process.env.PORT || port, function () {
   console.log(`Listening on port ${this.address().port}...`)
 })
 
-// sockets setup 
-
-// io.on('connection', socket => {
-//   console.log('A user connected')
-
-//   socket.on('user_connected', data => {
-//     socket.broadcast.emit('user_connected', { data })
-//     socket.emit('user_connected', { data })
-//   })
-// })
-
-
-
-
-
-// app.listen(process.env.PORT || port, function () {
 // app.listen(port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
 // })
