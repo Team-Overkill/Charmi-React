@@ -10,9 +10,9 @@ const express = require('express')
   , profilesCtrl = require('./server/profilesCtrl')
   , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
-  , port = 3005
   , app = express();
 
+app.set('port', process.env.PORT || 3005)
 
 app.use(bodyParser.json());
 app.use(session({
@@ -165,8 +165,12 @@ const mat = {
 }
 
 
-app.listen(process.env.PORT || port, function () {
-  console.log(`Listening on port ${this.address().port}...`)
+// app.listen(process.env.PORT || port, function () {
+//   console.log(`Listening on port ${this.address().port}...`)
+// })
+
+app.listen(app.get('port'), () => {
+  console.log('listening on: ', app.get('port'))
 })
 
 // app.listen(port, function () {
