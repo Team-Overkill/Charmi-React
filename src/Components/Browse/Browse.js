@@ -32,6 +32,7 @@ nextItem (){
   this.setState({
     nameIndex: this.state.nameIndex + 1 
   })
+ 
 }
  prevItem ()  {
     // if (i === 0) { // i would become 0
