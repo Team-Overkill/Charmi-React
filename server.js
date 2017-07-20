@@ -1,4 +1,7 @@
 const express = require('express')
+  , session = require('express-session')
+  , passport = require('passport')
+  , Auth0Strategy = require('passport-auth0')
   , bodyParser = require('body-parser')
   , cors = require('cors')
   , massive = require('massive')
@@ -13,23 +16,97 @@ const express = require('express')
 
 
 app.use(bodyParser.json());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: config.sessionSecret
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors());
 
+
 //Local
-massive(config.dbURLString).then(function (db) {
+massive(config.dbURLString).then(db => {
   app.set('db', db)
   console.log(`connected to db`)
 });
+
 //Online
 // massive(process.env.connectionString).then(function (db) {
 //   app.set('db', db)
 //   console.log(`connected to db`)
 // });
 
+passport.use(new Auth0Strategy({
+    domain: config.auth0.domain,
+    clientID: config.auth0.clientID,
+    clientSecret: config.auth0.clientSecret,
+    callbackURL: '/api/auth/callback'
+  },
+  (accessToken, refreshToken, extraParams, profile, done) => {
+    let db = app.get('db')
+    db.getUserByAuthId(profile.id).then(user => {
+      user = user[0];
+      if (!user) {
+        console.log(profile)
+        console.log('Creating user...');
+        db.createUserByAuth([profile.id, profile.name.givenName])
+          .then(user => {
+            console.log('User created...');
+            return done(null, user[0]);
+          })
+      } else {
+        console.log('Found user...', user);
+        return done(null, user);
+      }
+    })
+  }
+));
 
-// app.get('https://charmi-server.herokuapp.com/matches', matchesCtrl.getAllMatches);
-// app.get('https://charmi-server.herokuapp.com/conversations', conversationCtrl.getConversations);
-// app.get('https://charmi-server.herokuapp.com/profiles', profilesCtrl.getProfiles);
+//THIS IS INVOKED ONE TIME TO SET THINGS UP
+passport.serializeUser(function (userA, done) {
+  console.log('Serializing user...', userA);
+  var userB = userA;
+  //Things you might do here :
+  //Serialize just the id, get other information to add to session,
+  done(null, userB); //PUTS 'USER' ON THE SESSION
+});
+
+// USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
+
+passport.deserializeUser(function (userB, done) {
+  var userC = userB;
+  // app.get('db').getUserAndFavs(userC.authid).then(function (favorites){
+    // userC.favorites = favorites;
+    done(null, userC);
+//move done() inside of promise .then or else it will fire before it gets a response
+//   })
+});
+
+app.get('/api/auth', passport.authenticate('auth0'));
+
+
+app.get('/api/auth/callback',
+  passport.authenticate('auth0', {
+    successRedirect: 'http://localhost:3000/browse' //frontend port
+  }),
+  function (req, res) {
+
+    res.status(200).send(req.user);
+  })
+
+app.get('/api/auth/me', function (req, res) {
+  if (!req.user) return res.sendStatus(404);
+  //THIS IS WHATEVER VALUE WE GOT FROM userC variable above.
+  res.status(200).send(req.user);
+})
+
+app.get('/api/auth/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+})
+
 
 app.get('/api/matches', matchesCtrl.getAllMatches);
 app.get('/api/conversations', conversationCtrl.getConversations);
@@ -67,13 +144,13 @@ app.post('/api/conversations', conversationCtrl.createConv);
 //sample req.obj
 const conv = {
   "user_1": 1
-  , "user_2" : 6
+  , "user_2": 6
 }
 //Post a message
 app.post('/api/conversations/message', conversationCtrl.createNewMessage)
 //sample req.obj
 const mes = {
-  "message": "hello" 
+  "message": "hello"
   , "conversation_id": 5
   , "user_id": 1
 }
@@ -84,11 +161,14 @@ app.get('/api/conversations/:id', conversationCtrl.getConversationByID)
 app.post('/api/matches/:id', matchesCtrl.createMatch)
 //sample req.obj
 const mat = {
-  "user_1" : 1
-  , "user_2" : 3
+  "user_1": 1
+  , "user_2": 3
 }
 
 
+app.listen(process.env.PORT || port, function () {
+  console.log(`Listening on port ${this.address().port}...`)
+})
 
 // sockets setup 
 
@@ -106,9 +186,6 @@ const mat = {
 
 
 // app.listen(process.env.PORT || port, function () {
+// app.listen(port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
 // })
-
-app.listen(port, function () {
-  console.log(`Listening on port ${this.address().port}...`)
-})

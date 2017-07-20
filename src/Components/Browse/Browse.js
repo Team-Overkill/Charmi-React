@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ProfileCard from './ProfileCard/ProfileCard';
 import {getProfiles} from '../../ducks/profilesReducer';
-
+import Modal from './ProfileModal'
 import './Browse.css';
 
 class BrowseMode extends Component {
@@ -32,6 +32,7 @@ nextItem (){
   this.setState({
     nameIndex: this.state.nameIndex + 1 
   })
+ 
 }
  prevItem ()  {
     // if (i === 0) { // i would become 0
@@ -52,21 +53,28 @@ this.setState({
         key={profile.id}
         name={profile.first_name}
         primary_photo={profile.primary_photo}
+        age={profile.age}
       />
     ))
 
     return (
       <div>
 
-        This is the Browse profiles page...
-
-        <Link to={`/matches`}>
-          <button>Go To Matches</button>
-        </Link>
+      <div className="browseNav">
+        <header className="browseHeader"><i className="fa fa-bars" aria-hidden="true"></i><span>Charmi</span><Link to={`/matches`}>
+         <i className="fa fa-comments" aria-hidden="true"></i>
+        </Link></header>
+        </div>
+        
 
         {profileCards[this.state.nameIndex]}
-          <button onClick={()=> this.nextItem()}>Next</button>
-          <button onClick={()=> this.prevItem()}>Previous</button>
+          <div className="bottomButtonGroup">
+            <div onClick={()=> this.nextItem()} className="passButton"><i className="fa fa-times" aria-hidden="true"></i></div>
+             <i  className="fa fa-id-card-o" aria-hidden="true"></i>
+           <div onClick={()=> this.nextItem()} className="likeButton"><i className="fa fa-heart-o" aria-hidden="true"></i></div>
+         {/* <Modal/> */}
+          
+           </div>
       </div>
     )
   }

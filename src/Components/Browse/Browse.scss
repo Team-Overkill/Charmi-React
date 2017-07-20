@@ -1,0 +1,67 @@
+// Like dislike buttons
+@import '../../variables.scss';
+.browseHeader {
+    height: 7vh;
+    width: 100%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $siteColorTheme;
+    span {
+        margin-left: 47px;
+        margin-right: 47px;
+        color: black;
+    }
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-style: none;
+        color: inherit;
+        cursor: pointer;
+        font-family: inherit;
+    }
+}
+
+.likeButton {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid $siteColorTheme;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    margin-right: 40px;
+}
+
+.passButton {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid $siteColorTheme;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    margin-left: 40px;
+}
+
+.bottomButtonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    .fa-id-card-o {
+        font-size: larger;
+    } // overflow: hidden;
+    // margin-left: 10px;
+}
+
+.browseNav {
+    display: flex;
+    justify-content: space-around;
+}
