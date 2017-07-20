@@ -1,0 +1,56 @@
+.browseHeader {
+  height: 7vh;
+  width: 100%;
+  background-color: #EAEAEA;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #00CED1; }
+  .browseHeader span {
+    margin-left: 47px;
+    margin-right: 47px;
+    color: black; }
+  .browseHeader a:link,
+  .browseHeader a:visited,
+  .browseHeader a:hover,
+  .browseHeader a:active {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit; }
+
+.likeButton {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: 2px solid #00CED1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  margin-right: 40px; }
+
+.passButton {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: 2px solid #00CED1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  margin-left: 40px; }
+
+.bottomButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%; }
+  .bottomButtonGroup .fa-id-card-o {
+    font-size: larger; }
+
+.browseNav {
+  display: flex;
+  justify-content: space-around; }
