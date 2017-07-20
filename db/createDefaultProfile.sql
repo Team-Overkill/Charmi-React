@@ -1,0 +1,5 @@
+-- db obj
+INSERT INTO users
+(id)
+VALUES(DEFAULT)
+RETURNING id;
