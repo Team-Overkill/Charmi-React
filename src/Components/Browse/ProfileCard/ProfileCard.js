@@ -10,6 +10,7 @@ export default class ProfileCard extends Component {
       <div>
         <div>
           {this.props.name}
+          <img src={this.props.primary_photo}/>
         </div>
       </div>
     )

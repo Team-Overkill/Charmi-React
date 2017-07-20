@@ -7,10 +7,42 @@ import {getProfiles} from '../../ducks/profilesReducer';
 import './Browse.css';
 
 class BrowseMode extends Component {
+  constructor(props)
+  {
+    super ()
+
+    this.state = {
+      nameIndex: 0
+    }
+
+  }
+  
   componentWillMount() {
     this.props.getProfiles();
   }
 
+nextItem (){
+  // if (this.state.nameIndex < profileCards.length)
+//   function nextItem() {
+//     i = i + 1; // increase i by one
+//     i = i % arr.length; // if we've gone too high, start from `0` again
+//     return arr[i]; // give us back the item of where we are now
+// this.state.nameIndex % this.state.nameIndex.length
+// }
+  this.setState({
+    nameIndex: this.state.nameIndex + 1 
+  })
+}
+ prevItem ()  {
+    // if (i === 0) { // i would become 0
+    //     i = arr.length; // so put it at the other end of the array
+    // }
+    // i = i - 1; // decrease by one
+    // return arr[i]; // give us back the item of where we are now
+this.setState({
+    nameIndex: this.state.nameIndex - 1 
+  })
+}
   render() {
     console.log(this.props)
     console.log(this.props.profiles)
@@ -19,6 +51,7 @@ class BrowseMode extends Component {
       <ProfileCard
         key={profile.id}
         name={profile.first_name}
+        primary_photo={profile.primary_photo}
       />
     ))
 
@@ -31,8 +64,9 @@ class BrowseMode extends Component {
           <button>Go To Matches</button>
         </Link>
 
-        {profileCards}
-
+        {profileCards[this.state.nameIndex]}
+          <button onClick={()=> this.nextItem()}>Next</button>
+          <button onClick={()=> this.prevItem()}>Previous</button>
       </div>
     )
   }
