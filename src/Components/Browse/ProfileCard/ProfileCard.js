@@ -9,11 +9,8 @@ export default class ProfileCard extends Component {
     return (
       <div>
         <div>
-          <div className="browseImageWrapper"><div className='browseImage' style={{backgroundImage: `url(${this.props.primary_photo})`}}></div></div>
-          <div className="browseNameAge">
-           {this.props.name + "," + " "}
-             {this.props.age}
-           </div>
+          {this.props.name}
+          <img src={this.props.primary_photo}/>
         </div>
       </div>
     )
