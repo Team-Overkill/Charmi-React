@@ -8,6 +8,7 @@ const express = require('express')
   , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , port = 3005
+  // , io = require('socket.io')
   , app = express();
 
 
@@ -86,6 +87,21 @@ const mat = {
   "user_1" : 1
   , "user_2" : 3
 }
+
+
+
+// sockets setup 
+
+// io.on('connection', socket => {
+//   console.log('A user connected')
+
+//   socket.on('user_connected', data => {
+//     socket.broadcast.emit('user_connected', { data })
+//     socket.emit('user_connected', { data })
+//   })
+// })
+
+
 
 
 
