@@ -5,7 +5,34 @@ import {Link} from 'react-router-dom';
 
 import './Messages.css';
 
-export default function Messages() {
+export default class Messages extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      messages: [{
+        chat: "Hi. Hello. How are ya?"
+      }]
+    }
+  }
+
+  render() {
+
+    const messages = this.state.messages.filter(messages => messages)
+
+      .map((messages, index) => (
+        <div key={index}>
+          
+          <div>
+          {messages.chat}
+          </div>
+                    
+        </div>
+      ))
+  
+
+
+
   return (
     <div>
 
@@ -22,6 +49,8 @@ export default function Messages() {
           </header>
         </div>
 
+        {messages}
+
         <footer className="footerWrapper">
           <input type="text"/>
           <button>SEND</button>
@@ -32,4 +61,5 @@ export default function Messages() {
       </Link>*/}
     </div>
   )
+}
 }
