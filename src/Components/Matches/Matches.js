@@ -4,25 +4,60 @@ import {Link} from 'react-router-dom';
 
 import './Matches.css';
 
-export default function Matches() {
-  return (
-    <div>
+export default class Matches extends Component {
+  constructor(props) {
+    super(props)
 
-        <div>
-          <header className="messageHeader">
-            <Link to={`/browse`}>
-              <i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
-            </Link>
+    this.state = {
+      matches: [{
+        img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
+        name: "Joe"
+      },
+      {
+        name: "Jane",
+        img: "http://saravazphotography.com/wp-content/uploads/2015/10/Best-1-2(pp_w614_h409).jpg"
+      }
+      ]
+    }
+  }
 
-              <span>Matches</span>
+  render() {
 
-            <Link to={`/messages`}>
-              <i className="fa fa-comments fa-2x" aria-hidden="true"></i>
-            </Link>
+    const matches = this.state.matches.filter(matches => matches)
 
-          </header>
+      .map((matches, index) => (
+        <div key={index} className="matchesWrapper">
+          
+          <div style={{textAlign: "center"}} >
+          <img src={matches.img}/>
+          {matches.name}
+          </div>
+
+          <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
+          
         </div>
+      ));
 
-    </div>
-  )
+    return (
+      <div>
+      
+        <header className="matchesHeader">
+
+          <Link to={`/browse`}>
+            <i className="fa fa-angle-left" aria-hidden="true" style={{fontSize: 30, fontWeight: 700}}></i>
+          </Link>
+
+            <span>Matches</span>
+
+          <Link to={`/messages`}>
+            <i className="fa fa-comments" aria-hidden="true" style={{fontSize: 22}}></i>
+          </Link>
+
+        </header>
+
+        {matches}
+
+      </div>
+    )
+}
 }

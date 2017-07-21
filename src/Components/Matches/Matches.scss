@@ -1,4 +1,7 @@
 @import '../../variables.scss';
+body {
+    font-family: $siteFontFamily;
+}
 .matchesHeader {
     height: 7vh;
     width: 100%;
@@ -7,6 +10,8 @@
     justify-content: space-around;
     align-items: center;
     color: $siteColorTheme;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $siteColorTheme;
     span {
         margin-left: 47px;
         margin-right: 47px;
@@ -24,3 +29,28 @@
         font-family: inherit;
     }
 }
+
+
+.matchesWrapper {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    letter-spacing: 1px;
+    padding-right: 50px;
+
+    img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        border: solid 1px $siteColorTheme;
+        margin-left: 15px;
+        margin-top: 3px;
+    }
+}
+.matchesWrapper:active {
+        background: #EAEAEA;
+        transition: .1s ease;
+    }
