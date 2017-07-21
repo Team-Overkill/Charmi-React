@@ -3,7 +3,8 @@ import axios from 'axios';
 const getUserURL = 'http://localhost:3005/api/profiles/'
 
 const initialState = {
-  user: []
+  user: [],
+  isLoggedIn: false
 }
 
 //Action Types
