@@ -52,5 +52,6 @@ body {
 }
 .matchesWrapper:active {
         background: #EAEAEA;
-        transition: .1s ease;
+        transition: background-color .2s linear;
+        // transition: .1s ease;
     }

@@ -15,7 +15,7 @@ export default class Matches extends Component {
       },
       {
         name: "Jane",
-        img: "http://saravazphotography.com/wp-content/uploads/2015/10/Best-1-2(pp_w614_h409).jpg"
+        img: "https://usercontent2.hubstatic.com/7134529_f520.jpg"
       }
       ]
     }
@@ -28,11 +28,11 @@ export default class Matches extends Component {
       .map((matches, index) => (
         <div key={index} className="matchesWrapper">
           
-          <div style={{textAlign: "center"}} >
+          <div>
           <img src={matches.img}/>
           {matches.name}
           </div>
-
+          
           <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
           
         </div>
@@ -50,7 +50,7 @@ export default class Matches extends Component {
             <span>Matches</span>
 
           <Link to={`/messages`}>
-            <i className="fa fa-comments" aria-hidden="true" style={{fontSize: 22}}></i>
+            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{fontSize: 22}}></i>
           </Link>
 
         </header>
