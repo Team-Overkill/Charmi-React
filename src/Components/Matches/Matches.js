@@ -7,10 +7,22 @@ import './Matches.css';
 export default function Matches() {
   return (
     <div>
-      This is the Matches page...
-      <Link to={`/messages`}>
-        <button>Go To Messages</button>
-      </Link>
+
+        <div>
+          <header className="messageHeader">
+            <Link to={`/browse`}>
+              <i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+            </Link>
+
+              <span>Matches</span>
+
+            <Link to={`/messages`}>
+              <i className="fa fa-comments fa-2x" aria-hidden="true"></i>
+            </Link>
+
+          </header>
+        </div>
+
     </div>
   )
 }

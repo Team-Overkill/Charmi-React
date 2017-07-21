@@ -6,6 +6,7 @@ import store from './store';
 import './index.scss';
 import App from './Components/App';
 import registerServiceWorker from './registerServiceWorker';
+import './normalize.css';
 
 ReactDOM.render(
 

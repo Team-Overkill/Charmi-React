@@ -1,0 +1,22 @@
+.matchesHeader {
+  height: 7vh;
+  width: 100%;
+  background-color: #EAEAEA;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #00CED1; }
+  .matchesHeader span {
+    margin-left: 47px;
+    margin-right: 47px;
+    color: black; }
+  .matchesHeader a:link,
+  .matchesHeader a:visited,
+  .matchesHeader a:hover,
+  .matchesHeader a:active {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit; }

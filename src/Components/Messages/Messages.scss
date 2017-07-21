@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+.messageHeader {
+    height: 7vh;
+    width: 100%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $siteColorTheme;
+    span {
+        margin-left: 47px;
+        margin-right: 47px;
+        color: black;
+    }
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+        text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-style: none;
+        color: inherit;
+        cursor: pointer;
+        font-family: inherit;
+    }
+}
