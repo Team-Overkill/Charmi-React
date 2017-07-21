@@ -68,6 +68,9 @@
     justify-content: space-around;
     
 }
+.likeNotify {
+    display: none;
+}
 .likedBoxOn {
     height: 90px;
     width: 90px;
@@ -84,21 +87,7 @@
     font-weight: bold;
     border-radius: 20%;
 }
-.likedBox {
-    height: 90px;
-    width: 90px;
-    z-index: 1000;
-    position: absolute;
-    top: 35%;
-    right: 40%;
-    border: 1px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: red;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 20%;
+.nopeNotifyUser {
     display: none;
 }
 .nopeBoxOn  {
@@ -117,20 +106,4 @@
     font-weight: bold;
     border-radius: 20%;
 }
-.nopeBox  {
-    height: 90px;
-    width: 90px;
-    z-index: 1000;
-    position: absolute;
-    top: 35%;
-    right:40%;
-    border: 1px solid green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: green;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 20%;
-    display: none;
-}
+

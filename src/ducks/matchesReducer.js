@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const getMatchesURL = '/matches'
-
+const getMatchesURL = '/api/matches'
+const postMatchesURL = '/api/matches/'
 const initialState = {
   matches: {}
 }
@@ -9,7 +9,7 @@ const initialState = {
 //Action Types
 
 const GET_MATCHES = 'GET_MATCHES';
-
+const POST_MATCHES = 'POST_MATCHES';
 //Reducer
 
 export default function matchesReducer( state = initialState, action) {
@@ -29,6 +29,17 @@ export function getMatches() {
   }).catch(err => console.log(err))
   return {
     type: GET_MATCHES,
+    payload: promise
+  }
+}
+export function postMatches(id) {
+  console.log('posting match...')
+  const promise = axios.post(`${postMatchesURL}${id}`).then(res => {
+    console.log(id)
+    return res.data 
+  }).catch(err => console.log(err))
+  return {
+    type: POST_MATCHES,
     payload: promise
   }
 }
