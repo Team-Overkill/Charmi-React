@@ -1,5 +1,8 @@
 // Like dislike buttons
 @import '../../variables.scss';
+body {
+    overflow: hidden;
+}
 .browseHeader {
     height: 7vh;
     width: 100%;
@@ -27,8 +30,8 @@
 }
 
 .likeButton {
-    height: 70px;
-    width: 70px;
+    height: 85px;
+    width: 85px;
     border-radius: 50%;
     border: 2px solid $siteColorTheme;
     display: flex;
@@ -40,8 +43,8 @@
 }
 
 .passButton {
-    height: 70px;
-    width: 70px;
+    height: 85px;
+    width: 85px;
     border-radius: 50%;
     border: 2px solid $siteColorTheme;
     display: flex;
@@ -59,6 +62,8 @@
     width: 100%;
     .fa-id-card-o {
         font-size: larger;
+        color: $siteColorTheme;
+        margin: -36px;
     } // overflow: hidden;
     // margin-left: 10px;
 }
