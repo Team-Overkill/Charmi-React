@@ -30,6 +30,7 @@ export default class ProfileCard extends Component {
             <h4>Height<span>{this.props.height}</span></h4>
             <h4>Relationship Readiness<span>{this.props.relationship_readiness}</span></h4>
             <hr/>
+            <button id="profileSlideClose">CLose</button>
               <i id="profileSlideClose" className="fa fa-window-close" aria-hidden="true"></i>
            </div> 
            </div>
@@ -37,12 +38,15 @@ export default class ProfileCard extends Component {
     )
   }
 }
-$('#profileSlideClose').click(function (e) {
+
+$(document).ready(function () {
+  
+  $('#profileSlideClose').click(function (e) {
     e.preventDefault();
     console.log('hello')
     $('.profileSliderContainerOpen').removeClass('profileSlidercontainer')
-  })
-$(document).ready(function () {
+  }) 
+
   $('#profileCheck').click(function (e) {
     e.preventDefault();
     console.log("jquery rules")
