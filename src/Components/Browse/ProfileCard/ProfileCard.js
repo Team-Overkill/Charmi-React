@@ -37,7 +37,11 @@ export default class ProfileCard extends Component {
     )
   }
 }
-
+$('#profileSlideClose').click(function (e) {
+    e.preventDefault();
+    console.log('hello')
+    $('.profileSliderContainerOpen').removeClass('profileSlidercontainer')
+  })
 $(document).ready(function () {
   $('#profileCheck').click(function (e) {
     e.preventDefault();
@@ -45,9 +49,5 @@ $(document).ready(function () {
     $('.profileSlidercontainer').addClass('profileSliderContainerOpen')
     
   })
-    $('#profileSlideClose').click(function (e) {
-    e.preventDefault();
-    console.log('hello')
-    $('.profileSliderContainerOpen').removeClass('profileSlidercontainer')
-  })
+    
   }) 
