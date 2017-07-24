@@ -39,6 +39,7 @@ export default class Messages extends Component {
   }
 
   render() {
+    
     const messages = this.state.data.map((e, i) => {
       return (
         <div className="chatswrapper" key={i}>
@@ -52,7 +53,6 @@ export default class Messages extends Component {
 
   return (
     <div>
-
         <div>
           <header className="messageHeader">
             
