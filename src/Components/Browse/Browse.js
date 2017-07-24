@@ -60,21 +60,29 @@ this.setState({
     return (
       <div>
 
-      <div className="browseNav">
-        <header className="browseHeader"><i className="fa fa-bars" aria-hidden="true"></i><span>Charmi</span><Link to={`/matches`}>
-         <i className="fa fa-comments" aria-hidden="true"></i>
-        </Link></header>
+        <div className="browseNav">
+          <header className="browseHeader"><i className="fa fa-bars" aria-hidden="true" style={{fontSize: 22}}></i>
+
+            <span>Charmi</span>
+            
+            <Link to={`/matches`}>
+              <i className="fa fa-comments" aria-hidden="true" style={{fontSize: 22}}></i>
+            </Link>
+          </header>
         </div>
         
 
         {profileCards[this.state.nameIndex]}
-          <div className="bottomButtonGroup">
-            <div onClick={()=> this.nextItem()} className="passButton"><i className="fa fa-times" aria-hidden="true"></i></div>
-             <i  className="fa fa-id-card-o" aria-hidden="true"></i>
-           <div onClick={()=> this.nextItem()} className="likeButton"><i className="fa fa-heart-o" aria-hidden="true"></i></div>
-         {/* <Modal/> */}
-          
-           </div>
+
+
+        <div className="bottomButtonGroup">
+          <div onClick={()=> this.nextItem()} className="passButton"><i className="fa fa-times" aria-hidden="true"></i></div>
+
+          <i className="fa fa-id-card-o" aria-hidden="true"></i>
+
+          <div onClick={()=> this.nextItem()} className="likeButton"><i className="fa fa-heart-o" aria-hidden="true"></i></div>
+          {/* <Modal/> */}
+        </div>
       </div>
     )
   }

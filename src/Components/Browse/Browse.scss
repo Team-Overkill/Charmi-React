@@ -1,5 +1,8 @@
 // Like dislike buttons
 @import '../../variables.scss';
+body {
+    font-family: $siteFontFamily;
+}
 .browseHeader {
     height: 7vh;
     width: 100%;
@@ -8,10 +11,13 @@
     justify-content: space-around;
     align-items: center;
     color: $siteColorTheme;
+    letter-spacing: 2px;
+    
     span {
         margin-left: 47px;
         margin-right: 47px;
         color: black;
+        font-family: siteFontFamily;
     }
     a:link,
     a:visited,
