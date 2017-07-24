@@ -1,42 +1,59 @@
-// body
-//   padding: 20px
-// input
-//   width: 1px
-//   height: 1px
-//   opacity: 0
-//   position: absolute
-//   overflow: hidden
-//   z-index: -1
+// div {
+//   background: rgba(0, 0, 0, .1);
+// }
 
-// label
-//   position: absolute
-//   top: 0
-//   left: 0
-//   width: 100%
-//   height: 100%
-//   display: flex
-//   align-items: center
-//   justify-content: center
-//   cursor: pointer
+.main-wrapper {
+    height: 100vh;
+    width: 100vw;
+    margin-top: -11px;
+    margin-left: -11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-// .preview
-//   position: relative
-//   width: 200px
-//   height: 200px
-//   background-repeat: no-repeat
-//   background-size: cover
-//   background-position: center
-//   border: 1px solid deeppink
-//   display: flex
-//   align-items: center
-//   justify-content: center
+.title-wrapper {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-//   &--fullscreen
-//     position: fixed
-//     top: 0
-//     left: 0
-//     width: 100%
-//     height: 100%
-//     background-size: contain
-//     border: none
-//     background-color: rgba(0,0,0,.5)
+.title-text {
+  color: white;
+}
+
+.content-wrapper {
+  padding: 10px;
+  flex:1;
+}
+
+.preferences-text {
+  color: white;
+}
+
+.preferences-checkbox-text {
+  color: white;
+}
+
+.preferences-checkbox {
+  margin-left: 0px;
+}
+
+.actions-wrapper {
+  height: 50px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.action-button {
+  margin-left: 20px;
+  height:30px;
+  padding: 0px 20px;
+}

@@ -1,0 +1,104 @@
+body {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.browseHeader {
+  height: 7vh;
+  width: 100%;
+  background-color: #EAEAEA;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #00CED1;
+  letter-spacing: 2px; }
+  .browseHeader span {
+    margin-left: 47px;
+    margin-right: 47px;
+    color: black;
+    font-family: siteFontFamily; }
+  .browseHeader a:link,
+  .browseHeader a:visited,
+  .browseHeader a:hover,
+  .browseHeader a:active {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit; }
+
+.likeButton {
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  border: 2px solid #00CED1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  margin-right: 40px;
+  color: #00CED1; }
+
+.passButton {
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  border: 2px solid #00CED1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  margin-left: 40px;
+  color: #00CED1; }
+
+.bottomButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%; }
+  .bottomButtonGroup .fa-id-card-o {
+    font-size: larger;
+    color: #00CED1;
+    margin: -36px; }
+
+.browseNav {
+  display: flex;
+  justify-content: space-around; }
+
+.likeNotify {
+  display: none; }
+
+.likedBoxOn {
+  height: 90px;
+  width: 90px;
+  z-index: 1000;
+  position: absolute;
+  top: 35%;
+  right: 40%;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 20%; }
+
+.nopeNotifyUser {
+  display: none; }
+
+.nopeBoxOn {
+  height: 90px;
+  width: 90px;
+  z-index: 1000;
+  position: absolute;
+  top: 35%;
+  right: 40%;
+  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 20%; }
