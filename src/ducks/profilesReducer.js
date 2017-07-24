@@ -23,6 +23,8 @@ export default function profileReducer( state = initialState, action) {
   }
 }
 
+//Action creators
+
 export function getProfiles() {
   console.log('getting profiles...')
   const promise = axios.get(getProfilesURL).then(res => {

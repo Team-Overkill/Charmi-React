@@ -12,7 +12,7 @@ class Landing extends Component {
         </div>
 
 
-          <div className="landing-splash-video-overlay" style={{backgroundImage: `url(${process.env.PUBLIC_URL}/img/video-overlay-cyan-background.png)`}}>
+          <div className="landing-splash-video-overlay" style={{backgroundImage: `url(${process.env.PUBLIC_URL}/img/video-overlay-white-background-border1.png)`}}>
             <video
               src="https://player.vimeo.com/external/173395141.hd.mp4?s=ec4198a3dd4120bcabaf222842018df488371c7b&profile_id=174&oauth2_token_id=57447761"
               type="video/mp4"
