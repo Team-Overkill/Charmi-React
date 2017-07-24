@@ -12,7 +12,7 @@ const express = require('express')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , app = express();
 
-app.set('port', process.env.PORT || 3005)
+app.set('port', process.env.PORT || config.port)
 
 app.use(bodyParser.json());
 app.use(session({
@@ -113,10 +113,10 @@ app.get('/api/profiles', profilesCtrl.getProfiles);
 app.get('/api/states', profilesCtrl.getStates);
 app.get('/api/profiles/:id', profilesCtrl.getProfileByID);
 
-//create profile
+// ------------------- CREATE PROFILE
 app.post('/api/profile/default', profilesCtrl.createDefaultProfile);
 
-//Update profile
+// ------------------- UPDATE PROFILE
 app.put('/api/profile/:id', profilesCtrl.updateProfileByID);
 //sample req.obj:
 const reqObj = {
@@ -138,14 +138,14 @@ const reqObj = {
   , "gender": "Female"
 }
 
-//Create Conversation
+// ------------------- CREATE CONVERSATION
 app.post('/api/conversations', conversationCtrl.createConv);
 //sample req.obj
 const conv = {
   "user_1": 1
   , "user_2": 6
 }
-//Post a message
+// ------------------- POST A MESSAGE
 app.post('/api/conversations/message', conversationCtrl.createNewMessage)
 //sample req.obj
 const mes = {
@@ -153,25 +153,69 @@ const mes = {
   , "conversation_id": 5
   , "user_id": 1
 }
-//get all messages in a conversation
+// ------------------- GET ALL MESSAGES IN A CONVERSATION BY CONVERSATION ID
 app.get('/api/conversations/:id', conversationCtrl.getConversationByID)
 
-//create a match
+// ------------------- CREATE A MATCH
 app.post('/api/matches/:id', matchesCtrl.createMatch)
 //sample req.obj
+//params = the logged in user's id
 const mat = {
   "user_1": 1
   , "user_2": 3
 }
 
+// GET MATCHES BY CURRENT USER ID
+app.get('/api/matches/:id', matchesCtrl.getMatchesByUserID)
+//sample
+// /api/matches/<id of user whose matches you are requesting>
+
+// ------------------- BLOCK A USER
+app.post('/api/block_user/:id', profilesCtrl.blockUserByID)
+//sample req.obj
+const blockU = {
+  "myUserID" : 1
+}
+
+// ------------------- GET A LIST OF BLOCKED USER BY CURRENT USER ID
+app.get('/api/block_user/:id', profilesCtrl.getMyBlockedUsersByID)
+
+// ------------------- GET PHOTOLIST BY CURRENT USER ID
+app.get('/api/photo_list/:id', profilesCtrl.getPhotoListByID)
+//sample
+// /api/photo_list/<id of user whose photolist you are requesting>
+
+// ------------------- ADD PHOTO TO LIST BY CURRENT USER ID
+app.post('/api/photo_list/:id', profilesCtrl.addPhotoToListByID)
+//sample
+// /api/photo_list/<id of user whose photolist you are adding to>
+const photoBody = {
+  "uri":"http://oopstyle.net/cute-wallpapers-sweet-pics-rq-6762.html"
+}
+
+// ------------------- DELETE PHOTO FROM LIST BY CURRENT USER ID
+app.delete('/api/photo_list/:id', profilesCtrl.deletePhotoToListByID)
+//sample
+// /api/photo_list/<id of user whose photolist you are deleting>
+
+// ------------------- GET A LIST OF INTERESTS BY CURRENT USER ID
+app.get('/api/interests/:id', profilesCtrl.getInterestsByID)
+//sample
+// /api/interests/<id of user whose interests you are displaying>
+
+// ------------------- ADD AN INTEREST BY CURRENT USER ID
+app.post('/api/interests/:id', profilesCtrl.addInterestsByID)
+//sample
+// /api/interests/<id of user whose interests you are displaying>
+const interest = {
+  "interest": "Reading"
+}
 
 // app.listen(process.env.PORT || port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
 // })
 
-app.listen(app.get('port'), () => {
-  console.log('listening on: ', app.get('port'))
-})
+app.listen(app.get('port'), () => console.log('listening on: ', app.get('port')))
 
 // app.listen(port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
