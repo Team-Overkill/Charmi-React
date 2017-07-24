@@ -22,7 +22,7 @@ yarn-error.log*
 
 .idea
 config.js
-
 src/**/*.css
 config
 .config
+
