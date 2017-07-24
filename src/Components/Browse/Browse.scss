@@ -1,6 +1,7 @@
 // Like dislike buttons
 @import '../../variables.scss';
 body {
+    overflow: hidden;
     font-family: $siteFontFamily;
 }
 .browseHeader {
@@ -33,8 +34,8 @@ body {
 }
 
 .likeButton {
-    height: 70px;
-    width: 70px;
+    height: 85px;
+    width: 85px;
     border-radius: 50%;
     border: 2px solid $siteColorTheme;
     display: flex;
@@ -42,11 +43,12 @@ body {
     justify-content: center;
     font-size: xx-large;
     margin-right: 40px;
+    color: $siteColorTheme;
 }
 
 .passButton {
-    height: 70px;
-    width: 70px;
+    height: 85px;
+    width: 85px;
     border-radius: 50%;
     border: 2px solid $siteColorTheme;
     display: flex;
@@ -54,6 +56,7 @@ body {
     justify-content: center;
     font-size: xx-large;
     margin-left: 40px;
+    color: $siteColorTheme;
 }
 
 .bottomButtonGroup {
@@ -63,6 +66,8 @@ body {
     width: 100%;
     .fa-id-card-o {
         font-size: larger;
+        color: $siteColorTheme;
+        margin: -36px;
     } // overflow: hidden;
     // margin-left: 10px;
 }
@@ -70,4 +75,44 @@ body {
 .browseNav {
     display: flex;
     justify-content: space-around;
+    
 }
+.likeNotify {
+    display: none;
+}
+.likedBoxOn {
+    height: 90px;
+    width: 90px;
+    z-index: 1000;
+    position: absolute;
+    top: 35%;
+    right:40%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20%;
+}
+.nopeNotifyUser {
+    display: none;
+}
+.nopeBoxOn  {
+    height: 90px;
+    width: 90px;
+    z-index: 1000;
+    position: absolute;
+    top: 35%;
+    right:40%;
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20%;
+}
+
