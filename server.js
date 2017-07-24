@@ -12,7 +12,7 @@ const express = require('express')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , app = express();
 
-app.set('port', process.env.PORT || 3005)
+app.set('port', process.env.PORT || config.port)
 
 app.use(bodyParser.json());
 app.use(session({
@@ -159,10 +159,21 @@ app.get('/api/conversations/:id', conversationCtrl.getConversationByID)
 //create a match
 app.post('/api/matches/:id', matchesCtrl.createMatch)
 //sample req.obj
+//params = the logged in user's id
 const mat = {
   "user_1": 1
   , "user_2": 3
 }
+
+//block a user
+app.post('/api/block_user/:id', profilesCtrl.blockUserByID)
+//sample req.obj
+const blockU = {
+  "myUserID" : 1
+}
+
+//get a list of MY blocked users
+app.get('/api/block_user/:id', profilesCtrl.getMyBlockedUsersByID)
 
 
 // app.listen(process.env.PORT || port, function () {

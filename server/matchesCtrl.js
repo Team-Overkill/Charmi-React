@@ -44,6 +44,7 @@ exports.createMatch = (req, res) => {
             res.status(200).send(`new match record was created successfully`)
           }).catch(err => res.status(500).send(err))
         }
+        else return res.status(200).send(`Profile was already liked`)
       }
     }
     res.status(200)
