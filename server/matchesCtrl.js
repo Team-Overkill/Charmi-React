@@ -10,23 +10,42 @@ exports.getMatchesByUserID = (req, res) => {
 
 //Create a match
 exports.createMatch = (req, res) => {
-  console.log(`logged in user = ${req.params.id}`)
   //get all records from matches
   req.app.get('db').getAllFromMatches().then(allMatches => {
-    console.log(allMatches[2].user_1)
-    let myID = req.params.id
+    const myID = req.params.id
+    let u1 = req.body.user_1
+    let u2 = req.body.user_2
+    let theirID
+    let counter = 0
+    myID == u1 ? theirID = u2 : theirID = u1
     for (let i = 0; i < allMatches.length; i++) {
-      console.log(allMatches[i])
-      if (allMatches[i].user_1 === myID || allMatches[i].user_2 === myID) {
-        console.log(`you exist`)
-        
-        // req.app.get('db').customMatchQuery(req.params.id, req.body.user_1, req.body.user_2).then(response => {
-        // })
+      if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
+        counter++
+        return req.app.get('db').customMatchQuery(myID, u1, u2).then(response => {
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].user_1 === theirID && response[i].matched === true || response[i].user_2 === theirID && response[i].matched === true) {
+              // Do Nothing
+              return res.status(501).send(`Users are already matched`)
+            }
+            else if (response[i].user_1 === theirID || response[i].user_2 === theirID) {
+              //PUT
+              req.app.get('db').updateMatch(response[i].id).then(newMatch => {
+                res.status(200).send(`Updated match record with the id of: ${response[i].id}`)
+              }).catch(err => res.status(500).send(err))
+            }
+          }
+        })
+      }
+      else {
+        counter++
+        if (counter > 0 && counter === allMatches.length) {
+          //create a new record
+          req.app.get('db').createMatches(myID, theirID).then(newMatchRecord => {
+            res.status(200).send(`new match record was created successfully`)
+          }).catch(err => res.status(500).send(err))
+        }
       }
     }
-
-  })
-  // req.app.get('db').createMatches(req.body.user_1, req.body.user_2).then(matches => {
-  //   res.status(200).send(matches);
-  // }).catch(err => console.log(err))
+    res.status(200)
+  }).catch(err => res.status(500).send(err))
 }
