@@ -49,6 +49,14 @@ body {
         margin-left: 15px;
         margin-top: 3px;
     }
+    
+    span {
+        height: 100%;
+        margin-right: 200px;
+        // border: solid 1px red;
+        display: flex;
+        align-items: center;
+    }
 }
 .matchesWrapper:active {
         background: #EAEAEA;
