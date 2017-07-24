@@ -79,7 +79,7 @@ INSERT INTO users
 VALUES('Erica', 32, '5ft 8in', 'Highland', 52, '40.2732624,-111.7051887', 'Writer, biker, ukulele player, aggressively average at ping-pong.', 'Donut Maker', 'BYU', 6, '28-45', 10, 'false', 'http://freestocks.org/fs/wp-content/uploads/2017/02/smiling_girl_winter_portrait-450x300.jpg', 'ergwregeg', 'Female');
 INSERT INTO users
 (first_name, age, height, home_town, home_state_id, geolocation, about, work, school, relationship_readiness, age_range, search_location_radius, search_hometown, primary_photo, auth_token, gender)
-VALUES('Tiffany', 25, '5ft 8in', 'American Fork', 52, '40.2732624,-111.7051887', 'Always up for the next adventure. Just Ask!', 'Convergys', 'UVU', 1, '20-35', 20, 'true', 'https://static.pexels.com/photos/211997/pexels-photo-211997.jpeg', 'owiejfwrgwrgww', 'Female');
+VALUES('Tiffany', 25, '5ft 8in', 'American Fork', 52, '40.2732624,-111.7051887', 'Always up for the next adventure. Just Ask!', 'Convergys', 'UVU', 1, '20-35', 20, 'true', 'http://devilsworkshop.org/files/2013/01/enlarged-facebook-profile-picture.jpg', 'owiejfwrgwrgww', 'Female');
 INSERT INTO users
 (first_name, age, height, home_town, home_state_id, geolocation, about, work, school, relationship_readiness, age_range, search_location_radius, search_hometown, primary_photo, auth_token, gender)
 VALUES('Andrew', 26, '5ft 8in', 'Orem', 52, '40.2732624,-111.7051887', 'Im here because Im too lazy to find my soulmate and my mom said Im getting old.', 'petsmart', 'UVU', 10, '18-30', 30, 'true', 'https://static.pexels.com/photos/23876/pexels-photo.jpg', 'ehteh', 'Female');
@@ -93,9 +93,7 @@ VALUES('Tyler', 22, '5ft 8in', 'Phoenix', 2, '40.2732624,-111.7051887', 'Im an a
 
 
 --add photos to album
-    INSERT INTO photo_list (uri, user_id) VALUES ('https://www.petinsurance.com.au/wp-content/uploads/2016/07/WelshCorgi_961x558-1.jpg', 1);
-    INSERT INTO photo_list (uri, user_id) VALUES ('https://www.petinsurance.com.au/wp-content/uploads/2016/07/WelshCorgi_961x558-1.jpg', 1);
-    INSERT INTO photo_list (uri, user_id) VALUES ('https://www.petinsurance.com.au/wp-content/uploads/2016/07/WelshCorgi_961x558-1.jpg', 1);
+    INSERT INTO photo_list (uri, user_id) VALUES ('http://www.oscars.org/sites/oscars/files/styles/event_image_detail_default/public/partygirl_eventpage.png?itok=G5OkdP8Y', 1);
 
 --get list of photos by user_id
     --SELECT * FROM photo_list WHERE user_id = 1
@@ -109,7 +107,7 @@ VALUES('Tyler', 22, '5ft 8in', 'Phoenix', 2, '40.2732624,-111.7051887', 'Im an a
     --SELECT * FROM blocked_user_list WHERE user_id = 2
 
 --create conversation
-    INSERT INTO conversation_list (user_1, user_2) VALUES (1,2);
+    INSERT INTO conversation_list (user_1, user_2) VALUES (1,1);
 
 --create message and add it to conversation
     INSERT INTO messages (message, conversation_id, user_id) VALUES('Hi', 1, 1 );
@@ -141,7 +139,7 @@ VALUES('Tyler', 22, '5ft 8in', 'Phoenix', 2, '40.2732624,-111.7051887', 'Im an a
     --SELECT * FROM interests_list WHERE user_id = 2;
 
 --user 'likes' someone
-    INSERT INTO matches (user_1, user_2) VALUES (1,2);
+    INSERT INTO matches (user_1, user_2) VALUES (1,1);
 --'liked' user likes origin user back
     UPDATE matches
     SET matched = true
