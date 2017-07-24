@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 body {
-    font-family: $siteFontFamily;
+    font-family: $mainFont;
 }
 .messageHeader {
     height: 7vh;
@@ -13,6 +13,7 @@ body {
     letter-spacing: 2px;
     border-bottom: 1px solid $siteColorTheme;
     span {
+        font-family: $mainFont;
         margin-left: 47px;
         margin-right: 47px;
         color: black;

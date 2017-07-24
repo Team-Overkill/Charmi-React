@@ -13,11 +13,11 @@ export default class ProfileCard extends Component {
             <div className='browseImage' style={{backgroundImage: `url(${this.props.primary_photo})`}}></div>
           </div>
           <div className="browseNameAge">
-            {this.props.name + "," + " "}
-            {this.props.age}
+            {`${this.props.name}, ${this.props.age}`}
+            <span>{`${this.props.home_town}, ${this.props.state_code}`}</span>
           </div>
         </div>
-        <div className="profileSlidercontainer">
+        <div className="profileSliderContainer">
           <div className="aboutWrapper">
             {/* <div className="aboutImage"><img src={this.props.primary_photo}/> </div> */}
             <div className="profileHeader">
@@ -26,15 +26,16 @@ export default class ProfileCard extends Component {
                 - {this.props.home_town + "," + " "}{this.props.state_code}</div>
             </div>
 
-            <h4>About Me </h4><p>{this.props.about}</p>
+            <h4>About Me</h4><p>{this.props.about}</p>
             <hr/>
             <h4>School<span>{this.props.school}</span></h4>
             <h4>Work<span>&nbsp; {this.props.work}</span></h4>
             <h4>Height<span>{this.props.height}</span></h4>
             <h4>Relationship Readiness<span>{this.props.relationship_readiness}</span></h4>
             <hr/>
-            <button id="profileSlideClose">CLose</button>
-            <i id="profileSlideClose" className="fa fa-window-close" aria-hidden="true"></i>
+            <div className="profileSlideCloseContainer">
+              <i id="profileSlideClose" className="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -44,15 +45,8 @@ export default class ProfileCard extends Component {
 
 $(document).ready(function () {
 
-  $('#profileSlideClose').click(function (e) {
-    e.preventDefault();
+  $('#profileSlideClose').click(function () {
     console.log('hello')
-    $('.profileSliderContainerOpen').removeClass('profileSlidercontainer')
-  })
-
-  $('#profileCheck').click(function (e) {
-    e.preventDefault();
-    console.log("jquery rules")
-    $('.profileSlidercontainer').addClass('profileSliderContainerOpen')
+    $('.profileSliderContainer').removeClass('profileSliderContainerOpen')
   })
 })

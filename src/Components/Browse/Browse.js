@@ -7,6 +7,7 @@ import {getAuthUser} from '../../ducks/userReducer';
 import {getMatches, postMatches} from '../../ducks/matchesReducer';
 import './Browse.css';
 import $ from 'jquery';
+import logo from '../../assets/Charmi-logo-large-cyan.png';
 
 
 class BrowseMode extends Component {
@@ -93,7 +94,7 @@ class BrowseMode extends Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </Link>
 
-            <span>Charmi</span>
+            <img src={logo} alt="Charmi logo" className="browseNavLogo"/>
 
             <Link to={`/matches`}>
               <i className="fa fa-comments" aria-hidden="true"></i>
@@ -110,17 +111,23 @@ class BrowseMode extends Component {
           Nope
         </div>
 
-        {profileCards[this.state.nameIndex]}
+        <div>
+          {profileCards[this.state.nameIndex]}
+        </div>
 
         <div className="bottomButtonGroup">
+
           <div id="nope" onClick={() => this.nextItem()} className="passButton">
             <i className="fa fa-times" aria-hidden="true"></i>
           </div>
 
-          <i id="profileCheck" className="fa fa-id-card-o" aria-hidden="true"></i>
+          {/*<i id="profileCheck" className="fa fa-id-card-o" aria-hidden="true"></i>*/}
+          <i id="profileCheck" className="fa fa-angle-up" aria-hidden="true"></i>
 
-          <div id="like" onClick={() => this.handleMatch(this.props.profiles[this.state.nameIndex].id)} className="likeButton">
+          <div id="like" onClick={() => this.handleMatch(this.props.profiles[this.state.nameIndex].id)}
+               className="likeButton">
             <i className="fa fa-heart" aria-hidden="true"></i>
+
           </div>
 
         </div>
@@ -156,6 +163,12 @@ $(document).ready(function () {
       // toggle back after 1 second
       $('.nopeNotifyUser').removeClass('nopeBoxOn')
     }, 700);
+  })
+
+  $('#profileCheck').click(function (e) {
+    e.preventDefault();
+    console.log("jquery rules")
+    $('.profileSliderContainer').addClass('profileSliderContainerOpen')
   })
 
 })

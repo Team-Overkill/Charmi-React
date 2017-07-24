@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: "Varela Round", Arial, sans-serif; }
 
 .messageHeader {
   height: 7vh;
@@ -12,6 +12,7 @@ body {
   letter-spacing: 2px;
   border-bottom: 1px solid #00CED1; }
   .messageHeader span {
+    font-family: "Varela Round", Arial, sans-serif;
     margin-left: 47px;
     margin-right: 47px;
     color: black; }
