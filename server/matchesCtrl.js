@@ -4,9 +4,7 @@ exports.getAllMatches = (req, res, next) => {
   }).catch(err => console.log(err))
 }
 
-exports.getMatchesByUserID = (req, res) => {
-
-}
+exports.getMatchesByUserID = (req, res) => req.app.get('db').getMatches(req.params.id).then(matches => res.status(200).send(matches))
 
 //Create a match
 exports.createMatch = (req, res) => {
@@ -44,6 +42,7 @@ exports.createMatch = (req, res) => {
             res.status(200).send(`new match record was created successfully`)
           }).catch(err => res.status(500).send(err))
         }
+        else return res.status(200).send(`Profile was already liked`)
       }
     }
     res.status(200)

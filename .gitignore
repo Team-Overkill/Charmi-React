@@ -24,3 +24,5 @@ yarn-error.log*
 config.js
 
 src/**/*.css
+config
+.config
