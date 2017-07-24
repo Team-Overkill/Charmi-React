@@ -1,34 +1,51 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-
+import io from 'socket.io-client';
 
 import './Messages.css';
 
-export default class Messages extends Component {
-  constructor(props) {
-    super(props)
+let socket = io(`http://localhost:3005/`)
 
+
+export default class Messages extends Component {
+  constructor() {
+    super()
     this.state = {
-      messages: [{
-        chat: "Hi. Hello. How are ya?"
-      }]
+      data: [{message: 'Hey'}],
+      userInput: ''
     }
+    this.updateInput = this.updateInput.bind(this)
+    this.sendTest = this.sendTest.bind(this)
+  }
+
+  componentDidMount() {
+    socket.on('from:server', d => {
+      this.setState({
+        data: [...this.state.data, d]
+      })
+    })
+  }
+
+  updateInput(e) {
+    this.setState({
+      userInput: e.target.value
+    })
+  }
+
+  sendTest() {
+    socket.emit('from:react', {message: this.state.userInput})
+    this.setState({userInput: ''})
   }
 
   render() {
-
-    const messages = this.state.messages.filter(messages => messages)
-
-      .map((messages, index) => (
-        <div key={index}>
-          
-          <div>
-          {messages.chat}
-          </div>
-                    
+    const messages = this.state.data.map((e, i) => {
+      return (
+        <div className="chatswrapper" key={i}>
+        <div className="chats" key={i}>{e.message}</div>
         </div>
-      ))
+      )
+    })
   
 
 
@@ -49,11 +66,11 @@ export default class Messages extends Component {
           </header>
         </div>
 
-        {messages}
+            {messages}
 
         <footer className="footerWrapper">
-          <input type="text"/>
-          <button>SEND</button>
+          <input type="text" onChange={this.updateInput} value={this.state.userInput} />
+          <button onClick={this.sendTest}>SEND</button>
         </footer>
 
       {/*<Link to={`/browse`}>

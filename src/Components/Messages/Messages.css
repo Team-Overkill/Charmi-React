@@ -1,5 +1,6 @@
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: "Varela Round";
+  overflow: hidden; }
 
 .messageHeader {
   height: 7vh;
@@ -10,11 +11,27 @@ body {
   align-items: center;
   color: #00CED1;
   letter-spacing: 2px;
-  border-bottom: 1px solid #00CED1; }
+  border-bottom: 1px solid #00CED1;
+  margin-bottom: 15px; }
   .messageHeader span {
     margin-left: 47px;
     margin-right: 47px;
     color: black; }
+
+.chatwrapper {
+  width: 100%;
+  padding-left: 7%;
+  padding-right: 7%;
+  display: flex;
+  justify-content: flex-end; }
+
+.chats {
+  display: inline-block;
+  float: right;
+  padding: 6px 10px;
+  background: #EAEAEA;
+  border-radius: 10px;
+  margin: 5px 7% 5px; }
 
 .footerWrapper {
   height: 12vh;
