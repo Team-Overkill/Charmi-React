@@ -31,9 +31,8 @@ export default class Matches extends Component {
           <div>
           <img src={matches.img}/>
           </div>
-          <span>
-          {matches.name}
-          </span>
+          
+          <span>{matches.name}</span>
           
           <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
           

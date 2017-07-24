@@ -41,7 +41,9 @@ export default class Messages extends Component {
   render() {
     const messages = this.state.data.map((e, i) => {
       return (
-        <p key={i}>{e.message}</p>
+        <div className="chatswrapper" key={i}>
+        <div className="chats" key={i}>{e.message}</div>
+        </div>
       )
     })
   
@@ -64,7 +66,7 @@ export default class Messages extends Component {
           </header>
         </div>
 
-        {messages}
+            {messages}
 
         <footer className="footerWrapper">
           <input type="text" onChange={this.updateInput} value={this.state.userInput} />

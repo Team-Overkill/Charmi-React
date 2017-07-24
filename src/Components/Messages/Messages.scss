@@ -1,6 +1,7 @@
 @import '../../variables.scss';
 body {
     font-family: $mainFont;
+    overflow: hidden;
 }
 .messageHeader {
     height: 7vh;
@@ -12,12 +13,31 @@ body {
     color: $siteColorTheme;
     letter-spacing: 2px;
     border-bottom: 1px solid $siteColorTheme;
+    margin-bottom: 15px;
     span {
         margin-left: 47px;
         margin-right: 47px;
         color: black;
     }
 }
+
+.chatwrapper {
+    width: 100%;
+    padding-left: 7%;
+    padding-right: 7%;
+    display: flex;
+    justify-content: flex-end;
+}
+.chats {
+    display: inline-block;
+    float: right;
+    padding: 6px 10px;
+    background: #EAEAEA;
+    border-radius: 10px;
+    margin: 5px 7% 5px;
+}
+
+
 .footerWrapper {
     height: 12vh;
     width: 100%;
