@@ -55,6 +55,11 @@ class CreateProfile extends Component {
       , "gender": "Male"
     }
     this.handleSaveClick = this.handleSaveClick.bind(this)
+    this.handleCancelClick = this.handleCancelClick.bind(this)
+    this.handleFirstNameInput = this.handleFirstNameInput.bind(this)
+    this.handleHeightInput = this.handleHeightInput.bind(this)
+    this.handleAgeSelect = this.handleAgeSelect.bind(this)
+    this.handleGenderSelect = this.handleGenderSelect.bind(this)
   }
 
   handleSaveClick() {
@@ -74,6 +79,12 @@ class CreateProfile extends Component {
     })
   }
 
+  handleHeightInput(e) {
+    this.setState({
+    "height": e.target.value
+    })
+  }
+
   handleAgeSelect(e) {
     this.setState({
     "age": e.target.value
@@ -83,6 +94,18 @@ class CreateProfile extends Component {
   handleGenderSelect(e) {
     this.setState({
     "gender": e.target.value
+    })
+  }
+
+  handleHomeTown(e) {
+    this.setState({
+    "home_town": e.target.value
+    })
+  }
+
+  handleHomeState(e) {
+    this.setState({
+    "home_state_id": e.target.value
     })
   }
 
@@ -146,13 +169,10 @@ class CreateProfile extends Component {
               </select>
             </div>
             <div>
-              
+              <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)}/>
             </div>
             <div>
-              <input type='text' placeholder='Height' />
-            </div>
-            <div>
-              <input type='text' placeholder='Home Town' />
+              <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)}/>
             </div>
             <div>
               <select defaultValue='Home State'>

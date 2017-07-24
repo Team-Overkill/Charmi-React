@@ -30,3 +30,12 @@ exports.createNewMessage = (req, res) => {
     res.status(200).send(response)
   }).catch(err => console.log(err))
 }
+
+// get conversation by users
+exports.conversationByUserIDs = (req, res) => {
+  console.log(req.body.user_1, req.body.user_2)
+  req.app.get('db').getUserConversations(req.body.user_1, req.body.user_2).then(convID => {
+    console.log(convID)
+    res.status(200).send(convID)
+  })
+}
