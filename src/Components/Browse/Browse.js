@@ -33,22 +33,18 @@ nextItem (){
 // this.state.nameIndex % this.state.nameIndex.length
 // }
 console.log("the other guy just invoked me")
-// setTimeout( () => {
-//   this.setState({
-//     nameIndex: this.state.nameIndex + 1 
-//   })
-//  },950);
+setTimeout( () => {
+  this.setState({
+    nameIndex: this.state.nameIndex + 1 
+  })
+ },950);
 
 
 }
   handleMatch (id)  {
    console.log(id)
    postMatches(id)
-    // axios.get('/api/matches').then(response => {
-    //   if (my  id matches their id then , essentially compare it)
-
-    //     its a match
-    // })
+   
     this.nextItem()
 }
 
@@ -90,7 +86,7 @@ console.log("the other guy just invoked me")
       <div>
 
       <div className="browseNav">
-        <header className="browseHeader"><Link to={`/edit-profile`}><i className="fa fa-bars" aria-hidden="true"></i></Link><span>Charmi</span><Link to={`/matches`}>
+        <header className="browseHeader"><Link to={`/create-profile`}><i className="fa fa-bars" aria-hidden="true"></i></Link><span>Charmi</span><Link to={`/matches`}>
          <i className="fa fa-comments" aria-hidden="true"></i>
         </Link></header>
         </div>

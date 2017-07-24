@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Landing from './Components/Landing/Landing';
-import EditProfile from './Components/EditProfile/EditProfile';
+import CreateProfile from './Components/CreateProfile/CreateProfile';
 import Browse from './Components/Browse/Browse';
 import Matches from './Components/Matches/Matches';
 import Messages from './Components/Messages/Messages';
@@ -16,9 +16,9 @@ export default (
     />
 
     <Route
-      component={EditProfile}
+      component={CreateProfile}
       exact
-      path='/edit-profile'
+      path='/create-profile'
     />
 
     <Route

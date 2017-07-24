@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import './EditProfile.css';
+import './CreateProfile.css';
 
 
-export default function EditProfile() {
+export default function CreateProfile() {
   return (
 <div>
   <Link to={'/browse/'}><i className="fa fa-angle-right" aria-hidden="true"></i></Link>
