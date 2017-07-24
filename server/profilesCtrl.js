@@ -74,3 +74,18 @@ exports.getMyBlockedUsersByID = (req, res) => {
     res.status(200).send(`List of My Blocked Users = ${blockedProfiles}`);
   }).catch(err => console.log(err))
 }
+
+//get list of photos by id
+exports.getPhotoListByID = (req, res) => req.app.get('db').getPhotoList(req.params.id).then(photolist => res.status(200).send(photolist))
+
+//add photo to your photo list
+exports.addPhotoToListByID = (req, res) => req.app.get('db').addPhoto(req.params.id, req.body.uri).then(photoResponse => res.status(200).send(`Photo was add successfully`))
+
+//delete photo by id
+exports.deletePhotoToListByID = (req, res) => req.app.get('db').deletePhoto(req.params.id).then(_ => res.status(200).send(`Photo was deleted successfully`))
+
+//get interests by id
+exports.getInterestsByID = (req, res) => req.app.get('db').getInterests(req.params.id).then(interests => res.status(200).send(interests))
+
+//add interests by id
+exports.addInterestsByID = (req, res) => req.app.get('db').addInterests(req.params.id, req.body.interest).then(_ => res.status(200).send(`Interest was added successfully`))

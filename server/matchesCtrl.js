@@ -4,9 +4,7 @@ exports.getAllMatches = (req, res, next) => {
   }).catch(err => console.log(err))
 }
 
-exports.getMatchesByUserID = (req, res) => {
-
-}
+exports.getMatchesByUserID = (req, res) => req.app.get('db').getMatches(req.params.id).then(matches => res.status(200).send(matches))
 
 //Create a match
 exports.createMatch = (req, res) => {
