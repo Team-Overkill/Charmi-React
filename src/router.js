@@ -35,7 +35,7 @@ export default (
 
     <Route
       component={Messages}
-      path='/messages/'
+      path='/messages/:id'
     />
 
   </Switch>

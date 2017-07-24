@@ -1,7 +1,34 @@
 // div {
 //   background: rgba(0, 0, 0, .1);
 // }
+@import '../../variables.scss';
+body {
+  overflow: hidden;
+}
+.editNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-left: 26%;
+    }
+    i{
+      margin-right: -30px;
+      color: $siteColorTheme;
+      font-size: 26px;
 
+    }
+}
+.createProfileHeader {
+    height: 7vh;
+    width: 100%;
+    background-color: #EAEAEA;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $siteColorTheme;
+    letter-spacing: 2px;
+}
 .main-wrapper {
     height: 100vh;
     width: 100vw;
@@ -10,12 +37,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    div {
+      margin-top: 10px;
+    }
+    input {
+      border: gray;
+    }
+}
+.ageGender {
+  display: flex;
+ 
+  align-items: center;
 }
 
 .title-wrapper {
   height: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -25,15 +63,23 @@
 
 .content-wrapper {
   padding: 10px;
+  padding-left: 30px;
   flex:1;
+  border: gray;
 }
+.searchRange {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
 
+}
 .preferences-text {
-  color: #333;
+  color: gray;
 }
 
 .preferences-checkbox-text {
-  color: #333;
+  color: gray;
 }
 
 .preferences-checkbox {
@@ -48,8 +94,8 @@
   justify-content: flex-end;
   align-items: center;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 64px;
+  right: 113px;
 }
 
 .action-button {

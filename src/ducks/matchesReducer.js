@@ -22,7 +22,7 @@ export default function matchesReducer( state = initialState, action) {
   }
 }
 
-export function getMatches() {
+export function getMatches(id) {
   console.log('getting matches...')
   const promise = axios.get(getMatchesURL).then(res => {
     return res.data
