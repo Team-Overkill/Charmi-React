@@ -10,7 +10,9 @@ const express = require('express')
   , profilesCtrl = require('./server/profilesCtrl')
   , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
-  , app = express();
+  , app = express()
+  , server = require('http').createServer(app)
+  , io = require('socket.io')(server);
 
 app.set('port', process.env.PORT || config.port)
 
@@ -23,6 +25,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
+
+// SOCKET.IO
+io.on('connection', function (socket) {
+  socket.on('from:react', function (data) {
+    io.emit('from:server', data)
+  });
+});
 
 
 //Local
@@ -217,7 +226,8 @@ const interest = {
 //   console.log(`Listening on port ${this.address().port}...`)
 // })
 
-app.listen(app.get('port'), () => console.log('listening on: ', app.get('port')))
+// had to switch to 'server.listen' so socket.io would work
+server.listen(app.get('port'), () => console.log('listening on: ', app.get('port')))
 
 // app.listen(port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
