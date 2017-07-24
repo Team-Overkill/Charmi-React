@@ -1,0 +1,106 @@
+@import '../../variables.scss';
+
+.landing-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: nowrap column;
+  align-items: center;
+  justify-content: space-between;
+  //font-family: $logoFont;
+
+  .landing-logo-container {
+    width: 80%;
+    height: 20%;
+    background: url('http://i.imgur.com/llMFNd7.png') no-repeat;
+    background-size: contain;
+    margin: 40px 0px;
+    background-position: center;
+  }
+
+  .landing-splash-video-overlay {
+    width: 100%;
+    position: relative;
+    width: 100%;
+    height: 45%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 0;
+    margin: 0;
+    //border: solid 5px $siteColorTheme;
+    border: solid 5px white;
+
+    .landing-splash-video {
+      position: absolute;
+      top: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      padding: 0;
+      margin: 0;
+      //background-color: rgba();
+    }
+  }
+
+  .landing-button-container {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: auto;
+    margin-top: auto;
+
+    .landing-btn {
+      width: 50%;
+      height: 50px;
+      border: solid 4px $siteColorTheme;
+      text-decoration: none;
+      color: $siteColorTheme;
+      background-color: inherit;
+      text-transform: uppercase;
+      //border-radius: $loginButtonRadius;
+
+      a {
+        font-family: $mainFont;
+      }
+
+      a:link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:hover {
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .login-disclaimers-container {
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 20px;
+
+    p {
+      font-family: $mainFont;
+      font-size: 12px;
+      margin: auto;
+      text-align: center;
+
+      span {
+        color: $siteColorTheme;
+      }
+    }
+  }
+}

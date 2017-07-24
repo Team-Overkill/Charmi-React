@@ -45,12 +45,14 @@ passport.use(new Auth0Strategy({
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
     let db = app.get('db')
+    console.log(profile.id)
     db.getUserByAuthId(profile.id).then(user => {
       user = user[0];
+      console.log(user)
       if (!user) {
-        console.log(profile)
+        console.log(profile.identities[0].user_id)
         console.log('Creating user...');
-        db.createUserByAuth([profile.id, profile.name.givenName])
+        db.createUserByAuth([profile.id, profile.name.givenName, profile.picture])
           .then(user => {
             console.log('User created...');
             return done(null, user[0]);
