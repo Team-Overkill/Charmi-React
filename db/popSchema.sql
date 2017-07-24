@@ -107,7 +107,7 @@ VALUES('Tyler', 22, '5ft 8in', 'Phoenix', 2, '40.2732624,-111.7051887', 'Im an a
     --SELECT * FROM blocked_user_list WHERE user_id = 2
 
 --create conversation
-    INSERT INTO conversation_list (user_1, user_2) VALUES (1,2);
+    INSERT INTO conversation_list (user_1, user_2) VALUES (1,1);
 
 --create message and add it to conversation
     INSERT INTO messages (message, conversation_id, user_id) VALUES('Hi', 1, 1 );
@@ -139,7 +139,7 @@ VALUES('Tyler', 22, '5ft 8in', 'Phoenix', 2, '40.2732624,-111.7051887', 'Im an a
     --SELECT * FROM interests_list WHERE user_id = 2;
 
 --user 'likes' someone
-    INSERT INTO matches (user_1, user_2) VALUES (1,2);
+    INSERT INTO matches (user_1, user_2) VALUES (1,1);
 --'liked' user likes origin user back
     UPDATE matches
     SET matched = true
