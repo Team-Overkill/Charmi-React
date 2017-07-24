@@ -55,6 +55,11 @@ class CreateProfile extends Component {
       , "gender": "Male"
     }
     this.handleSaveClick = this.handleSaveClick.bind(this)
+    this.handleCancelClick = this.handleCancelClick.bind(this)
+    this.handleFirstNameInput = this.handleFirstNameInput.bind(this)
+    this.handleHeightInput = this.handleHeightInput.bind(this)
+    this.handleAgeSelect = this.handleAgeSelect.bind(this)
+    this.handleGenderSelect = this.handleGenderSelect.bind(this)
   }
 
   handleSaveClick() {
@@ -74,6 +79,12 @@ class CreateProfile extends Component {
     })
   }
 
+  handleHeightInput(e) {
+    this.setState({
+    "height": e.target.value
+    })
+  }
+
   handleAgeSelect(e) {
     this.setState({
     "age": e.target.value
@@ -83,6 +94,18 @@ class CreateProfile extends Component {
   handleGenderSelect(e) {
     this.setState({
     "gender": e.target.value
+    })
+  }
+
+  handleHomeTown(e) {
+    this.setState({
+    "home_town": e.target.value
+    })
+  }
+
+  handleHomeState(e) {
+    this.setState({
+    "home_state_id": e.target.value
     })
   }
 
@@ -124,7 +147,7 @@ class CreateProfile extends Component {
         <div className='title-wrapper'>
           <p className='title-text'>This is the CreateProfile page...</p>
         </div>
-        <form className='content-wrapper'>
+        <form className='content-wrapper' onSubmit={this.handleSaveClick} onReset={this.handleCancelClick} >
           <div className='personal-info-wrapper'>
             <div>
               <input type='text' placeholder='First Name' onChange={e => this.handleFirstNameInput(e)}/>
@@ -142,10 +165,10 @@ class CreateProfile extends Component {
               </select>
             </div>
             <div>
-              <input type='text' placeholder='Height' />
+              <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)}/>
             </div>
             <div>
-              <input type='text' placeholder='Home Town' />
+              <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)}/>
             </div>
             <div>
               <select defaultValue='Home State'>
@@ -209,8 +232,8 @@ class CreateProfile extends Component {
             </div>
           </div>
           <div className='actions-wrapper'>
-            <input type='submit' className='action-button' value='Save' onClick={this.handleSaveClick} />
-            <input type='reset' className='action-button' value='Cancel' onClick={this.handleCancelClick} />
+            <input type='submit' className='action-button' value='Save' />
+            <input type='reset' className='action-button' value='Cancel'/>
           </div>
         </form>
       </div>

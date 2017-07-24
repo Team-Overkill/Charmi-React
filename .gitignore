@@ -25,4 +25,5 @@ config.js
 src/**/*.css
 config
 .config
-
+.css
+*.css
