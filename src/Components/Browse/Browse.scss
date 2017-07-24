@@ -2,8 +2,9 @@
 @import '../../variables.scss';
 body {
     overflow: hidden;
-    font-family: $siteFontFamily;
+    font-family: $mainFont;
 }
+
 .browseHeader {
     height: 7vh;
     width: 100%;
@@ -33,32 +34,6 @@ body {
     }
 }
 
-.likeButton {
-    height: 85px;
-    width: 85px;
-    border-radius: 50%;
-    border: 2px solid $siteColorTheme;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: xx-large;
-    margin-right: 40px;
-    color: $siteColorTheme;
-}
-
-.passButton {
-    height: 85px;
-    width: 85px;
-    border-radius: 50%;
-    border: 2px solid $siteColorTheme;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: xx-large;
-    margin-left: 40px;
-    color: $siteColorTheme;
-}
-
 .bottomButtonGroup {
     display: flex;
     align-items: center;
@@ -68,8 +43,33 @@ body {
         font-size: larger;
         color: $siteColorTheme;
         margin: -36px;
-    } // overflow: hidden;
-    // margin-left: 10px;
+    }
+
+    .likeButton {
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        border: 4px solid $siteColorTheme;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: xx-large;
+        margin-right: 40px;
+        color: $siteColorTheme;
+    }
+
+    .passButton {
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        border: 4px solid $siteColorTheme;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: xx-large;
+        margin-left: 40px;
+        color: $siteColorTheme;
+    }
 }
 
 .browseNav {
