@@ -14,6 +14,11 @@ exports.getMatchesByUserID = (req, res) => {
       uniqueIDs.includes(matches[i].user_2) ? null : uniqueIDs.push(matches[i].user_2);
     })
     //get user profiles
+     for(let i = 0; i < uniqueIDs.length; i++){
+      if(uniqueIDs[i] == req.params.id){
+        uniqueIDs.splice(i,1)
+      }
+    }
     const allProfiles = []
     let sendProfile = (arr) => {
       let b = arr.pop()

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const getMatchesURL = '/api/matches'
+const getMatchesURL = '/api/matches/'
 const postMatchesURL = '/api/matches/'
 const initialState = {
-  matches: {}
+  matches: []
 }
 
 //Action Types
@@ -16,7 +16,7 @@ export default function matchesReducer( state = initialState, action) {
   switch (action.type) {
     case `${GET_MATCHES}_FULFILLED`:
       console.log(action.payload)
-      return Object.assign({}, state, {matches: [...action.payload]});
+      return Object.assign({}, state, {matches: action.payload});
 
     default: return state;
   }
@@ -24,9 +24,12 @@ export default function matchesReducer( state = initialState, action) {
 
 export function getMatches(id) {
   console.log('getting matches...')
-  const promise = axios.get(getMatchesURL).then(res => {
+  console.log(id)
+  const promise = axios.get(getMatchesURL + id).then(res => {
+    console.log(res.data)
     return res.data
   }).catch(err => console.log(err))
+  
   return {
     type: GET_MATCHES,
     payload: promise
