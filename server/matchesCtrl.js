@@ -1,10 +1,35 @@
-exports.getAllMatches = (req, res, next) => {
-  req.app.get('db').getAllMatches().then(function (matches) {
-    res.status(200).send(matches);
-  }).catch(err => console.log(err))
-}
+// exports.getAllMatches = (req, res, next) => {
+//   req.app.get('db').getAllMatches().then(function (matches) {
+//     res.status(200).send(matches);
+//   }).catch(err => console.log(err))
+// }
 
-exports.getMatchesByUserID = (req, res) => req.app.get('db').getMatches(req.params.id).then(matches => res.status(200).send(matches))
+exports.getMatchesByUserID = (req, res) => {
+  req.app.get('db').getMatches(req.params.id).then(matches => {
+    const uniqueIDs = []
+    const all = []
+    //get all unique user id'set
+    matches.map((elem, i) => {
+      uniqueIDs.includes(matches[i].user_1) ? null : uniqueIDs.push(matches[i].user_1);
+      uniqueIDs.includes(matches[i].user_2) ? null : uniqueIDs.push(matches[i].user_2);
+    })
+    //get user profiles
+    const allProfiles = []
+    let sendProfile = (arr) => {
+      let b = arr.pop()
+      req.app.get('db').getProfile(b).then(profile => {
+        allProfiles.push(profile[0])
+        if (arr.length > 0) sendProfile(arr)
+        else {
+          all.push(matches)
+          all.push(allProfiles)
+          res.status(200).send(all)
+        }
+      })
+    }
+    sendProfile(uniqueIDs)
+  })
+}
 
 //Create a match
 exports.createMatch = (req, res) => {

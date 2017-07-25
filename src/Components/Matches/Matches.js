@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import { getMatches } from '../../ducks/matchesReducer';
 
 import './Matches.css';
 
-export default class Matches extends Component {
+export class Matches extends Component {
   constructor(props) {
     super(props)
 
+    
     this.state = {
       matches: [{
         img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
@@ -20,6 +22,10 @@ export default class Matches extends Component {
       ]
     }
   }
+   componentWillMount() {
+      this.props.getMatches();
+    // this.props.getMatches();
+     }
 
   render() {
 
@@ -30,8 +36,9 @@ export default class Matches extends Component {
           
           <div>
           <img src={matches.img}/>
-          {matches.name}
           </div>
+          
+          <span>{matches.name}</span>
           
           <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
           
@@ -61,3 +68,11 @@ export default class Matches extends Component {
     )
 }
 }
+function mapStateToProps(state) {
+  console.log(state)
+  return {
+    matches: state.matchesReducer.matches
+  }
+}
+
+export default connect(mapStateToProps, {getMatches})(Matches)

@@ -55,6 +55,11 @@ class CreateProfile extends Component {
       , "gender": "Male"
     }
     this.handleSaveClick = this.handleSaveClick.bind(this)
+    this.handleCancelClick = this.handleCancelClick.bind(this)
+    this.handleFirstNameInput = this.handleFirstNameInput.bind(this)
+    this.handleHeightInput = this.handleHeightInput.bind(this)
+    this.handleAgeSelect = this.handleAgeSelect.bind(this)
+    this.handleGenderSelect = this.handleGenderSelect.bind(this)
   }
 
   handleSaveClick() {
@@ -74,6 +79,12 @@ class CreateProfile extends Component {
     })
   }
 
+  handleHeightInput(e) {
+    this.setState({
+    "height": e.target.value
+    })
+  }
+
   handleAgeSelect(e) {
     this.setState({
     "age": e.target.value
@@ -83,6 +94,18 @@ class CreateProfile extends Component {
   handleGenderSelect(e) {
     this.setState({
     "gender": e.target.value
+    })
+  }
+
+  handleHomeTown(e) {
+    this.setState({
+    "home_town": e.target.value
+    })
+  }
+
+  handleHomeState(e) {
+    this.setState({
+    "home_state_id": e.target.value
     })
   }
 
@@ -120,32 +143,36 @@ class CreateProfile extends Component {
 
 
     return (
+      
       <div className='main-wrapper'>
-        <div className='title-wrapper'>
-          <p className='title-text'>This is the CreateProfile page...</p>
+        <div className="editNav">
+        <header className="createProfileHeader"><span>Edit Profile</span><Link to={`/browse`}>
+         <i className="fa fa-angle-right" aria-hidden="true"></i>
+        </Link></header>
         </div>
+        {/* <div className='title-wrapper'>
+          <p className='title-text'>This is the CreateProfile page...</p>
+        </div> */}
         <form className='content-wrapper'>
           <div className='personal-info-wrapper'>
             <div>
               <input type='text' placeholder='First Name' onChange={e => this.handleFirstNameInput(e)}/>
             </div>
-            <div>
+            <div className="ageGender">
               <select defaultValue='Age' onChange={e => this.handleAgeSelect(e)}>
                 <option value="Age">Age</option>
                 {ageDroplist}
               </select>
-            </div>
-            <div>
               <select defaultValue='Male' onChange={e => this.handleGenderSelect(e)}>
                 <option value='Male'>Male</option>
                 <option>Female</option>
               </select>
             </div>
             <div>
-              <input type='text' placeholder='Height' />
+              <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)}/>
             </div>
             <div>
-              <input type='text' placeholder='Home Town' />
+              <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)}/>
             </div>
             <div>
               <select defaultValue='Home State'>
@@ -167,21 +194,25 @@ class CreateProfile extends Component {
             </div>
           </div>
           <div className='preferences'>
-            <div>
-              <p className='preferences-text'>Preferences</p>
-            </div>
-            <div>
+             
+            {/* <div>
               <input type='checkbox' className='preferences-checkbox' /><span className='preferences-checkbox-text'>Search Home Town</span>
             </div>
             <div>
               <input type='checkbox' className='preferences-checkbox' defaultChecked /><span className='preferences-checkbox-text'>Use Location</span>
-            </div>
+            </div> */}
             <div>
               <select>
                 <option>Relationship Readiness</option>
                 <option>Just Looking</option>
               </select>
               <br />
+<hr/>
+              {/* <div>
+              <p className='preferences-text'>Discovery Settings</p>
+            </div>  */}
+            <div className="searchRange">
+            <p>Age Range</p>
               <select defaultValue='Age Start'>
                 <option value="Age Start">Age Start</option>
                 {ageDroplist}
@@ -190,7 +221,10 @@ class CreateProfile extends Component {
                 <option value="Age End">Age End</option>
                 {ageDroplist}
               </select>
+              </div>
               <br />
+              <div className="searchRange">
+                <p>Search Range</p>
               <select defaultValue='default'>
                 <option value='default'>Search Radius in Miles</option>
                 <option>Any</option>
@@ -206,11 +240,13 @@ class CreateProfile extends Component {
                 <option>300</option>
                 <option>500</option>
               </select>
+              </div>
             </div>
           </div>
+          <hr/>
           <div className='actions-wrapper'>
             <input type='submit' className='action-button' value='Save' onClick={this.handleSaveClick} />
-            <input type='reset' className='action-button' value='Cancel' onClick={this.handleCancelClick} />
+            <input type='reset' className='action-button' value='Logout' onClick={this.handleCancelClick} />
           </div>
         </form>
       </div>

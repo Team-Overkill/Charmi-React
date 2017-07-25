@@ -10,7 +10,9 @@ const express = require('express')
   , profilesCtrl = require('./server/profilesCtrl')
   , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
-  , app = express();
+  , app = express()
+  , server = require('http').createServer(app)
+  , io = require('socket.io')(server);
 
 app.set('port', process.env.PORT || config.port)
 
@@ -23,6 +25,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
+
+// SOCKET.IO
+io.on('connection', function (socket) {
+  socket.on('from:react', function (data) {
+    io.emit('from:server', data)
+  });
+});
 
 
 //Local
@@ -41,7 +50,7 @@ passport.use(new Auth0Strategy({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
     clientSecret: config.auth0.clientSecret,
-    callbackURL: '/api/auth/callback'
+    callbackURL: `http://localhost:${config.port}/api/auth/callback`
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
     let db = app.get('db')
@@ -109,7 +118,7 @@ app.get('/api/auth/logout', function (req, res) {
 })
 
 
-app.get('/api/matches', matchesCtrl.getAllMatches);
+// app.get('/api/matches', matchesCtrl.getAllMatches);
 app.get('/api/conversations', conversationCtrl.getConversations);
 app.get('/api/profiles', profilesCtrl.getProfiles);
 app.get('/api/states', profilesCtrl.getStates);
@@ -155,6 +164,16 @@ const mes = {
   , "conversation_id": 5
   , "user_id": 1
 }
+
+// GET CONVERSATION id BY USER ID'S
+app.put('/api/conversations', conversationCtrl.conversationByUserIDs)
+//sample
+const convUsers = {
+  "user_1": 1
+  , "user_2": 2
+}
+
+
 // ------------------- GET ALL MESSAGES IN A CONVERSATION BY CONVERSATION ID
 app.get('/api/conversations/:id', conversationCtrl.getConversationByID)
 
@@ -167,7 +186,7 @@ const mat = {
   , "user_2": 3
 }
 
-// GET MATCHES BY CURRENT USER ID
+// ------------------- GET MATCHES BY CURRENT USER ID
 app.get('/api/matches/:id', matchesCtrl.getMatchesByUserID)
 //sample
 // /api/matches/<id of user whose matches you are requesting>
@@ -217,7 +236,8 @@ const interest = {
 //   console.log(`Listening on port ${this.address().port}...`)
 // })
 
-app.listen(app.get('port'), () => console.log('listening on: ', app.get('port')))
+// had to switch to 'server.listen' so socket.io would work
+server.listen(app.get('port'), () => console.log('listening on: ', app.get('port')))
 
 // app.listen(port, function () {
 //   console.log(`Listening on port ${this.address().port}...`)
