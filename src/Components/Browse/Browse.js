@@ -3,12 +3,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ProfileCard from './ProfileCard/ProfileCard';
 import {getProfiles} from '../../ducks/profilesReducer';
-<<<<<<< HEAD
-import {postMatches} from '../../ducks/matchesReducer';
-=======
 import {getAuthUser} from '../../ducks/userReducer';
 import {getMatches, postMatches} from '../../ducks/matchesReducer';
->>>>>>> master
 import './Browse.css';
 import $ from 'jquery';
 import logo from '../../assets/Charmi-logo-large-cyan.png';
@@ -188,8 +184,4 @@ function mapStateToProps(state) {
   }
 }
 
-<<<<<<< HEAD
-export default connect(mapStateToProps, {getProfiles})(BrowseMode)
-=======
 export default connect(mapStateToProps, {getProfiles, getMatches, getAuthUser})(BrowseMode)
->>>>>>> master
