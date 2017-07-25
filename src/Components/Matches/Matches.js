@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { getMatches } from '../../ducks/matchesReducer';
+import { getAuthUser } from '../../ducks/userReducer'
 
 import './Matches.css';
 
@@ -22,55 +23,25 @@ export class Matches extends Component {
     //   ]
     // }
   }
-   componentWillMount() {
-     
-      // this.props.getMatches(1)
-      // .then( response => {
-        
-    //  this.loadMatches()
-    // // this.props.getMatches();
-    //   })
-    
-     }
-
      componentDidMount () {
-         this.props.getMatches(1)
-     
-      //  this.loadMatches()
+         this.props.getMatches(this.props.authUser.id)
+      this.props.getAuthUser().then(console.log(this.props.authUser));
      }
-    
-   
-    loadMatches() {
-     const useForMatches = this.props.matches[1] 
-     console.log(useForMatches)
-     const nameArr = []
-      useForMatches.forEach(i => {
-  for (let key in i){
-    if(key === 'first_name'){
-      this.nameArr.push(i.first_name)
-      console.log(nameArr)
-    }
-    else if (key === 'primary_photo'){
-      this.nameArr.push(i.primary_photo)
-    }
-  }
-})
-    }
 
   render() {
-console.log(this.props.matches[1])
+  console.log(this.props.matches[1])
 
 
  
+    // let matchSet = this.props.matches[0].map(e => {
+    //   if (e.user_1 !== this.props.authUser.id)  {
+
+    //   } 
+    // })
+    // interate over this.props.matches[0] map over it inside map 
 
 
-// const matchesProfiles = this.props.matches[1].map(i => {
-//   // for (var key in i) {
-//   //   if (i.first_name) {
-//       console.log(i.first_name)
-//   //   }
-//   // }
-// })
+
   var userProfiles = this.props.matches[1] || [];
     const matches = userProfiles
     // .filter(matches => matches)
@@ -121,9 +92,10 @@ function mapStateToProps(state) {
   }
   else {
     return {
+        authUser: state.userReducer.authUser,
         matches: state.matchesReducer.matches
       }
   } 
 }
 
-export default connect(mapStateToProps, {getMatches})(Matches)
+export default connect(mapStateToProps, {getMatches, getAuthUser})(Matches)
