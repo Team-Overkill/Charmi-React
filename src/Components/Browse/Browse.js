@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import ProfileSlider from './ProfileSlider/ProfileSlider';
 import ProfileCard from './ProfileCard/ProfileCard';
 import {getProfiles} from '../../ducks/profilesReducer';
-import {getMatches, postMatches} from '../../ducks/matchesReducer';
+import {postMatches} from '../../ducks/matchesReducer';
 import './Browse.css';
 import $ from 'jquery';
 
@@ -150,4 +150,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getProfiles, getMatches})(BrowseMode)
+export default connect(mapStateToProps, {getProfiles})(BrowseMode)

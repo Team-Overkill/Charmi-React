@@ -9,26 +9,30 @@ export class Matches extends Component {
   constructor(props) {
     super(props)
 
-    
-    this.state = {
-      matches: [{
-        img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
-        name: "Joe"
-      },
-      {
-        name: "Jane",
-        img: "https://usercontent2.hubstatic.com/7134529_f520.jpg"
-      }
-      ]
-    }
+
+
+
+
+    // this.state = {
+    //   matches: [{
+    //     img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
+    //     name: "Joe"
+    //   },
+    //   {
+    //     name: "Jane",
+    //     img: "https://usercontent2.hubstatic.com/7134529_f520.jpg"
+    //   }
+    //   ]
+    // }
   }
    componentWillMount() {
-      this.props.getMatches();
+      this.props.getMatches(1);
     // this.props.getMatches();
      }
 
   render() {
-
+    console.log(this.props.matches)
+    console.log(this.state.matches)
     const matches = this.state.matches.filter(matches => matches)
 
       .map((matches, index) => (
