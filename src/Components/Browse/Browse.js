@@ -23,6 +23,14 @@ class BrowseMode extends Component {
   componentDidMount() {
     this.props.getAuthUser().then(console.log(this.props.authUser));
     this.props.getProfiles();
+
+    $(document).ready(function () {
+      $('#profileCheck').click(function (e) {
+        e.preventDefault();
+        console.log("jquery rules")
+        $('.profileSliderContainer').addClass('profileSliderContainerOpen')
+      })
+    })
   }
 
   nextItem() {
@@ -164,13 +172,6 @@ $(document).ready(function () {
       $('.nopeNotifyUser').removeClass('nopeBoxOn')
     }, 700);
   })
-
-  $('#profileCheck').click(function (e) {
-    e.preventDefault();
-    console.log("jquery rules")
-    $('.profileSliderContainer').addClass('profileSliderContainerOpen')
-  })
-
 })
 
 function mapStateToProps(state) {

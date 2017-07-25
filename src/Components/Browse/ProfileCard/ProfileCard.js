@@ -4,6 +4,22 @@ import $ from 'jquery';
 import './ProfileCard.css';
 
 export default class ProfileCard extends Component {
+
+  componentDidMount() {
+    console.log('component did mount...')
+    $(document).ready(function () {
+      $('#profileSlideClose').click(function () {
+        console.log('hello')
+        $('.profileSliderContainer').removeClass('profileSliderContainerOpen')
+      })
+    })
+  }
+
+  componentWillUnmount() {
+    console.log('component unmounting...')
+  }
+
+
   render() {
     console.log(this.props)
     return (
@@ -26,7 +42,8 @@ export default class ProfileCard extends Component {
                 - {this.props.home_town + "," + " "}{this.props.state_code}</div>
             </div>
 
-            <h4>About Me</h4><p>{this.props.about}</p>
+            <h4>About Me</h4>
+            <p>{this.props.about}</p>
             <hr/>
             <h4>School<span>{this.props.school}</span></h4>
             <h4>Work<span>&nbsp; {this.props.work}</span></h4>
@@ -34,7 +51,7 @@ export default class ProfileCard extends Component {
             <h4>Relationship Readiness<span>{this.props.relationship_readiness}</span></h4>
             <hr/>
             <div className="profileSlideCloseContainer">
-              <i id="profileSlideClose" className="fa fa-angle-down" aria-hidden="true"></i>
+              <div id="profileSlideClose" className="fa fa-angle-down" aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -43,10 +60,3 @@ export default class ProfileCard extends Component {
   }
 }
 
-$(document).ready(function () {
-
-  $('#profileSlideClose').click(function () {
-    console.log('hello')
-    $('.profileSliderContainer').removeClass('profileSliderContainerOpen')
-  })
-})
