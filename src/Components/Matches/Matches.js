@@ -28,6 +28,8 @@ export class Matches extends Component {
       this.props.getAuthUser().then(console.log(this.props.authUser));
      }
 
+      
+
   render() {
   console.log(this.props.matches[1])
 
@@ -47,18 +49,22 @@ export class Matches extends Component {
     // .filter(matches => matches)
 
       .map((match, index) => {
+
+
         return (
-        <div key={index} className="matchesWrapper">
-          
-          <div>
-          <img src={match.primary_photo}/>
-          </div>
-          
-          <span>{match.first_name}</span>
-          
-          <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
-          
-        </div>
+          <Link to={`/messages/${match.id}`}>
+            <div key={index} className="matchesWrapper">
+              
+              <div>
+              <img src={match.primary_photo}/>
+              </div>
+              
+              <span>{match.first_name}</span>
+              
+                <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
+
+            </div>  
+          </Link>
         )
       });
 
