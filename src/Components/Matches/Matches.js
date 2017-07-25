@@ -24,7 +24,7 @@ export class Matches extends Component {
   }
    componentWillMount() {
      
-      this.props.getMatches();
+      this.props.getMatches(1);
     // this.props.getMatches();
      }
 
