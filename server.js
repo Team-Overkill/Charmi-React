@@ -118,7 +118,7 @@ app.get('/api/auth/logout', function (req, res) {
 })
 
 
-// app.get('/api/matches', matchesCtrl.getAllMatches);
+app.get('/api/matches', matchesCtrl.getMatchesByUserID);
 app.get('/api/conversations', conversationCtrl.getConversations);
 app.get('/api/profiles', profilesCtrl.getProfiles);
 app.get('/api/states', profilesCtrl.getStates);
