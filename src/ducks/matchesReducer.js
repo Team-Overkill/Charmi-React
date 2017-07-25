@@ -24,13 +24,9 @@ export default function matchesReducer( state = initialState, action) {
 
 export function getMatches(id) {
   console.log('getting matches...')
-<<<<<<< HEAD
-  const promise = axios.get(getMatchesURL, id).then(res => {
-=======
   console.log(id)
   const promise = axios.get(getMatchesURL + id).then(res => {
     console.log(res.data)
->>>>>>> master
     return res.data
   }).catch(err => console.log(err))
   

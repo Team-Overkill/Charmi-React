@@ -10,14 +10,7 @@ export class Matches extends Component {
   constructor(props) {
     super(props)
 
-<<<<<<< HEAD
-
-
-
-
-=======
     
->>>>>>> master
     // this.state = {
     //   matches: [{
     //     img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
@@ -30,21 +23,12 @@ export class Matches extends Component {
     //   ]
     // }
   }
-<<<<<<< HEAD
-   componentWillMount() {
-      this.props.getMatches(1);
-    // this.props.getMatches();
-     }
-
-  render() {
-    console.log(this.props.matches)
-    console.log(this.state.matches)
-    const matches = this.state.matches.filter(matches => matches)
-=======
      componentDidMount () {
          this.props.getMatches(this.props.authUser.id)
       this.props.getAuthUser().then(console.log(this.props.authUser));
      }
+
+      
 
   render() {
   console.log(this.props.matches[1])
@@ -58,7 +42,6 @@ export class Matches extends Component {
     // })
     // interate over this.props.matches[0] map over it inside map 
 
->>>>>>> master
 
 
   var userProfiles = this.props.matches[1] || [];
@@ -66,18 +49,22 @@ export class Matches extends Component {
     // .filter(matches => matches)
 
       .map((match, index) => {
+
+
         return (
-        <div key={index} className="matchesWrapper">
-          
-          <div>
-          <img src={match.primary_photo}/>
-          </div>
-          
-          <span>{match.first_name}</span>
-          
-          <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
-          
-        </div>
+          <Link to={`/messages/${match.id}`}>
+            <div key={index} className="matchesWrapper">
+              
+              <div>
+              <img src={match.primary_photo}/>
+              </div>
+              
+              <span>{match.first_name}</span>
+              
+                <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
+
+            </div>  
+          </Link>
         )
       });
 
