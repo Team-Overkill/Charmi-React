@@ -1,17 +1,21 @@
 import axios from 'axios';
 
-const getUserURL = 'http://localhost:3005/api/profiles/'
+//End Points
+const getUserURL = '/api/profiles/'
 const getAuthUserURL = '/api/auth/me'
+const getStatesURL = '/api/states'
 
 const initialState = {
   user: [],
-  isLoggedIn: false
+  isLoggedIn: false,
+  stateList: []
 }
 
 //Action Types
 
 const GET_USER = 'GET_USER';
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
+const GET_STATELIST = 'GET_STATELIST';
 
 //Reducer
 
@@ -26,6 +30,11 @@ export default function userReducer( state = initialState, action) {
       console.log(action.payload)
       console.log(state)
       return Object.assign({}, state, {user: [...action.payload]});
+
+    case `${GET_STATELIST}_FULFILLED`:
+      // console.log(action.payload)
+      // console.log(state)
+      return Object.assign({}, state, {stateList: [...action.payload]})
 
     default: return state;
   }
@@ -53,6 +62,18 @@ export function getUser(id) {
   }).catch(err => console.log(err))
   return {
     type: GET_USER_PROFILE,
+    payload: promise
+  }
+}
+
+export function getStateList() {
+  // console.log(`getting states...`)
+  const promise = axios.get(`${getStatesURL}`).then(res => {
+    // console.log(res.data)
+    return res.data
+  }).catch(err => console.log(err))
+  return {
+    type: GET_STATELIST,
     payload: promise
   }
 }

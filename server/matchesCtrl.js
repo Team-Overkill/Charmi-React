@@ -34,42 +34,50 @@ exports.getMatchesByUserID = (req, res) => {
 //Create a match
 exports.createMatch = (req, res) => {
   //get all records from matches
-  req.app.get('db').getAllFromMatches().then(allMatches => {
-    const myID = req.params.id
-    let u1 = req.body.user_1
-    let u2 = req.body.user_2
-    let theirID
-    let counter = 0
-    myID == u1 ? theirID = u2 : theirID = u1
-    for (let i = 0; i < allMatches.length; i++) {
-      if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
-        counter++
-        return req.app.get('db').customMatchQuery(myID, u1, u2).then(response => {
-          for (let i = 0; i < response.length; i++) {
-            if (response[i].user_1 === theirID && response[i].matched === true || response[i].user_2 === theirID && response[i].matched === true) {
+  const myID = req.params.id / 1
+  let u1 = req.body.user_1
+  let u2 = req.body.user_2
+  let theirID
+  let counter = 0
+  myID == u1 ? theirID = u2 : theirID = u1
+  req.app.get('db').customMatchQuery(myID).then(allMatches => {
+    console.log(`my id: ${myID}. user_1 id: ${u1}. user_2 id: ${u2}. their id: ${theirID}. allMatches.length: ${allMatches.length}`)
+    if (allMatches.length !== 0) {
+      for (let i = 0; i < allMatches.length; i++) {
+        console.log(allMatches[i].user_1)
+        if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
+          counter++
+          console.log(`why isn't it hitting here`)
+          for (let i = 0; i < allMatches.length; i++) {
+            if (allMatches[i].user_1 === theirID && allMatches[i].matched === true || allMatches[i].user_2 === theirID && allMatches[i].matched === true) {
               // Do Nothing
-              return res.status(501).send(`Users are already matched`)
+              return res.status(200).send(`Users are already matched`)
             }
-            else if (response[i].user_1 === theirID || response[i].user_2 === theirID) {
+            else if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
               //PUT
-              req.app.get('db').updateMatch(response[i].id).then(newMatch => {
-                res.status(200).send(`Updated match record with the id of: ${response[i].id}`)
+            console.log(`got to else if ${allMatches[i].id}`)
+              req.app.get('db').updateMatch(allMatches[i].id).then(newMatch => {
+                console.log(`got promise`)
+                res.status(200).send(`Updated match record with the id of: ${allMatches[i].id}`)
               }).catch(err => res.status(500).send(err))
             }
           }
-        })
-      }
-      else {
-        counter++
-        if (counter > 0 && counter === allMatches.length) {
-          //create a new record
-          req.app.get('db').createMatches(myID, theirID).then(newMatchRecord => {
-            res.status(200).send(`new match record was created successfully`)
-          }).catch(err => res.status(500).send(err))
+
         }
-        else return res.status(200).send(`Profile was already liked`)
+        else {
+          counter++
+          if (counter === allMatches.length) {
+            return res.status(200).send(`Profile was already liked`)
+          }
+        }
       }
+      res.status(200)
     }
-    res.status(200)
+    else {
+      // create a new record
+      req.app.get('db').createMatches(myID, theirID).then(newMatchRecord => {
+        res.status(200).send(`new match record was created successfully`)
+      }).catch(err => res.status(500).send(err))
+    }
   }).catch(err => res.status(500).send(err))
 }

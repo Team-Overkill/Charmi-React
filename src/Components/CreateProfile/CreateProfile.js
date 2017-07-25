@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { statesListReducer, getStatesList } from '../../ducks/statesReducer'
+import { getStateList } from '../../ducks/userReducer';
 
 import './CreateProfile.css';
 /*
@@ -24,14 +24,6 @@ XX ,	home_state_id
 */
 
 class CreateProfile extends Component {
-  //Get states list
-  // componentDidMount() {
-  //   getStatesList().then(states => {
-  //     this.setState({
-  //       states: states
-  //     })
-  //   })
-  // }
 
   constructor(props) {
     super(props)
@@ -62,6 +54,11 @@ class CreateProfile extends Component {
     this.handleGenderSelect = this.handleGenderSelect.bind(this)
   }
 
+  //Get states list
+  componentWillMount() {
+    this.props.getStateList()
+  }
+
   handleSaveClick() {
     alert(`clicked ${JSON.stringify(console.log(this.state))}`)
   }
@@ -70,51 +67,44 @@ class CreateProfile extends Component {
     alert(`clicked`)
   }
 
-
-
-
   handleFirstNameInput(e) {
     this.setState({
-    "first_name": e.target.value
+      "first_name": e.target.value
     })
   }
 
   handleHeightInput(e) {
     this.setState({
-    "height": e.target.value
+      "height": e.target.value
     })
   }
 
   handleAgeSelect(e) {
     this.setState({
-    "age": e.target.value
+      "age": e.target.value
     })
   }
 
   handleGenderSelect(e) {
     this.setState({
-    "gender": e.target.value
+      "gender": e.target.value
     })
   }
 
   handleHomeTown(e) {
     this.setState({
-    "home_town": e.target.value
+      "home_town": e.target.value
     })
   }
 
   handleHomeState(e) {
     this.setState({
-    "home_state_id": e.target.value
+      "home_state_id": e.target.value
     })
   }
 
   render() {
-    const stateList = [
-      { "id": 1, "state_code": "AL", "state_name": "Alabama" }
-      , { "id": 2, "state_code": "AK", "state_name": "Alaska" }
-      , { "id": 3, "state_code": "AS", "state_name": "America Samoa" }
-    ]
+    const stateList = this.props.stateList
 
     //create Dynamic Age List
     const ageList = []
@@ -143,20 +133,17 @@ class CreateProfile extends Component {
 
 
     return (
-      
+
       <div className='main-wrapper'>
         <div className="editNav">
-        <header className="createProfileHeader"><span>Edit Profile</span><Link to={`/browse`}>
-         <i className="fa fa-angle-right" aria-hidden="true"></i>
-        </Link></header>
+          <header className="createProfileHeader"><span>Edit Profile</span><Link to={`/browse`}>
+            <i className="fa fa-angle-right" aria-hidden="true"></i>
+          </Link></header>
         </div>
-        {/* <div className='title-wrapper'>
-          <p className='title-text'>This is the CreateProfile page...</p>
-        </div> */}
         <form className='content-wrapper'>
           <div className='personal-info-wrapper'>
             <div>
-              <input type='text' placeholder='First Name' onChange={e => this.handleFirstNameInput(e)}/>
+              <input type='text' placeholder='First Name' onChange={e => this.handleFirstNameInput(e)} />
             </div>
             <div className="ageGender">
               <select defaultValue='Age' onChange={e => this.handleAgeSelect(e)}>
@@ -169,10 +156,10 @@ class CreateProfile extends Component {
               </select>
             </div>
             <div>
-              <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)}/>
+              <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)} />
             </div>
             <div>
-              <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)}/>
+              <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)} />
             </div>
             <div>
               <select defaultValue='Home State'>
@@ -194,7 +181,7 @@ class CreateProfile extends Component {
             </div>
           </div>
           <div className='preferences'>
-             
+
             {/* <div>
               <input type='checkbox' className='preferences-checkbox' /><span className='preferences-checkbox-text'>Search Home Town</span>
             </div>
@@ -207,43 +194,43 @@ class CreateProfile extends Component {
                 <option>Just Looking</option>
               </select>
               <br />
-<hr/>
+              <hr />
               {/* <div>
               <p className='preferences-text'>Discovery Settings</p>
             </div>  */}
-            <div className="searchRange">
-            <p>Age Range</p>
-              <select defaultValue='Age Start'>
-                <option value="Age Start">Age Start</option>
-                {ageDroplist}
-              </select>
-              <select defaultValue='Age End'>
-                <option value="Age End">Age End</option>
-                {ageDroplist}
-              </select>
+              <div className="searchRange">
+                <p>Age Range</p>
+                <select defaultValue='Age Start'>
+                  <option value="Age Start">Age Start</option>
+                  {ageDroplist}
+                </select>
+                <select defaultValue='Age End'>
+                  <option value="Age End">Age End</option>
+                  {ageDroplist}
+                </select>
               </div>
               <br />
               <div className="searchRange">
                 <p>Search Range</p>
-              <select defaultValue='default'>
-                <option value='default'>Search Radius in Miles</option>
-                <option>Any</option>
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-                <option>40</option>
-                <option>50</option>
-                <option>75</option>
-                <option>100</option>
-                <option>150</option>
-                <option>200</option>
-                <option>300</option>
-                <option>500</option>
-              </select>
+                <select defaultValue='default'>
+                  <option value='default'>Search Radius in Miles</option>
+                  <option>Any</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>30</option>
+                  <option>40</option>
+                  <option>50</option>
+                  <option>75</option>
+                  <option>100</option>
+                  <option>150</option>
+                  <option>200</option>
+                  <option>300</option>
+                  <option>500</option>
+                </select>
               </div>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div className='actions-wrapper'>
             <input type='submit' className='action-button' value='Save' onClick={this.handleSaveClick} />
             <input type='reset' className='action-button' value='Logout' onClick={this.handleCancelClick} />
@@ -253,4 +240,6 @@ class CreateProfile extends Component {
     )
   }
 }
-export default CreateProfile
+
+const mapStateToProps = state => {return {stateList: state.userReducer.stateList}}
+export default connect(mapStateToProps, { getStateList })(CreateProfile)
