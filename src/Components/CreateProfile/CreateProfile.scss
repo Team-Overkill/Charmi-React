@@ -40,25 +40,14 @@ body {
     div {
       margin-top: 10px;
     }
-    input {
-      border: gray;
+    input,select,textarea {
+      border: 1px solid gray;
     }
 }
 .ageGender {
   display: flex;
  
   align-items: center;
-}
-
-.title-wrapper {
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title-text {
-  color: #333;
 }
 
 .content-wrapper {
