@@ -24,27 +24,72 @@ export class Matches extends Component {
   }
    componentWillMount() {
      
-      this.props.getMatches(1);
-    // this.props.getMatches();
+      // this.props.getMatches(1)
+      // .then( response => {
+        
+    //  this.loadMatches()
+    // // this.props.getMatches();
+    //   })
+    
      }
 
-  render() {
-console.log(this.props.matches)
-    const matches = this.props.matches.filter(matches => matches)
+     componentDidMount () {
+         this.props.getMatches(1)
+     
+      //  this.loadMatches()
+     }
+    
+   
+    loadMatches() {
+     const useForMatches = this.props.matches[1] 
+     console.log(useForMatches)
+     const nameArr = []
+      useForMatches.forEach(i => {
+  for (let key in i){
+    if(key === 'first_name'){
+      this.nameArr.push(i.first_name)
+      console.log(nameArr)
+    }
+    else if (key === 'primary_photo'){
+      this.nameArr.push(i.primary_photo)
+    }
+  }
+})
+    }
 
-      .map((matches, index) => (
+  render() {
+console.log(this.props.matches[1])
+
+
+ 
+
+
+// const matchesProfiles = this.props.matches[1].map(i => {
+//   // for (var key in i) {
+//   //   if (i.first_name) {
+//       console.log(i.first_name)
+//   //   }
+//   // }
+// })
+  var userProfiles = this.props.matches[1] || [];
+    const matches = userProfiles
+    // .filter(matches => matches)
+
+      .map((match, index) => {
+        return (
         <div key={index} className="matchesWrapper">
           
           <div>
-          <img src={matches.img}/>
+          <img src={match.primary_photo}/>
           </div>
           
-          <span>{matches.name}</span>
+          <span>{match.first_name}</span>
           
           <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
           
         </div>
-      ));
+        )
+      });
 
     return (
       <div>
@@ -71,9 +116,14 @@ console.log(this.props.matches)
 }
 function mapStateToProps(state) {
   console.log(state)
-  return {
-    matches: state.matchesReducer.matches
+  if (!state.matchesReducer.matches) {
+        return {}
   }
+  else {
+    return {
+        matches: state.matchesReducer.matches
+      }
+  } 
 }
 
 export default connect(mapStateToProps, {getMatches})(Matches)
