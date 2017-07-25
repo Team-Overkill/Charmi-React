@@ -1,31 +1,24 @@
 import axios from 'axios';
 
-const getUserURL = 'http://localhost:3005/api/profiles/'
 const getAuthUserURL = '/api/auth/me'
 
 const initialState = {
-  user: [],
+  authUser: [],
   isLoggedIn: false
 }
 
 //Action Types
 
-const GET_USER = 'GET_USER';
-const GET_USER_PROFILE = 'GET_USER_PROFILE';
+const GET_AUTH_USER = 'GET_AUTH_USER';
 
 //Reducer
 
 export default function userReducer( state = initialState, action) {
   switch (action.type) {
-    case `${GET_USER}_FULFILLED`:
+    case `${GET_AUTH_USER}_FULFILLED`:
       console.log(action.payload)
       console.log(state)
-      return Object.assign({}, state, {user: [...action.payload]});
-
-    case `${GET_USER_PROFILE}_FULFILLED`:
-      console.log(action.payload)
-      console.log(state)
-      return Object.assign({}, state, {user: [...action.payload]});
+      return Object.assign({}, state, {authUser: action.payload, isLoggedIn: true});
 
     default: return state;
   }
@@ -40,19 +33,7 @@ export function getAuthUser() {
     return res.data
   }).catch(err => console.log(err))
   return {
-    type: GET_USER,
-    payload: promise
-  }
-}
-
-export function getUser(id) {
-  console.log('getting user...')
-  const promise = axios.get(`${getUserURL}${id}`).then(res => {
-    console.log(res.data)
-    return res.data
-  }).catch(err => console.log(err))
-  return {
-    type: GET_USER_PROFILE,
+    type: GET_AUTH_USER,
     payload: promise
   }
 }
