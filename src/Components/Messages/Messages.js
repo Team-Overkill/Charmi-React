@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import io from 'socket.io-client';
+import { getAuthUser } from '../../ducks/userReducer';
+import {getConversations, getConversationId} from '../../ducks/conversationsReducer';
+
 
 import './Messages.css';
 
 let socket = io(`http://localhost:3005/`)
 
 
-export default class Messages extends Component {
+class Messages extends Component {
   constructor() {
     super()
     this.state = {
@@ -25,6 +28,20 @@ export default class Messages extends Component {
         data: [...this.state.data, d]
       })
     })
+
+    getConversationId({
+      user_1: 1,
+      user_2: 2
+      // user_1: Number(this.props.authUser.id),
+      // user_2: Number(this.props.match.params.id)
+    })
+    console.log(this.props.conversationId)
+
+    let convoObj = {
+      id: 5,
+      user_1: this.props.authUser.id,
+      user_2: this.props.match.params.id
+    }
   }
 
   updateInput(e) {
@@ -37,7 +54,6 @@ export default class Messages extends Component {
     socket.emit('from:react', {message: this.state.userInput})
     this.setState({userInput: ''})
   }
-
   render() {
     
     const messages = this.state.data.map((e, i) => {
@@ -80,3 +96,15 @@ export default class Messages extends Component {
   )
 }
 }
+
+function mapStateToProps(state) {
+  console.log(state)
+    return {
+        authUser: state.userReducer.authUser,
+        conversations: state.conversationsReducer.conversations,
+        conversationId: state.conversationsReducer.conversationId
+      }
+  }
+
+
+export default connect(mapStateToProps, {getConversations, getConversationId, getAuthUser})(Messages)
