@@ -29,7 +29,7 @@ class Messages extends Component {
       })
     })
 
-    getConversationId({
+    this.props.getConversationId({
       user_1: 1,
       user_2: 2
       // user_1: Number(this.props.authUser.id),
