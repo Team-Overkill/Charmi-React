@@ -184,4 +184,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getProfiles, getAuthUser, getMatches, postMatches})(BrowseMode)
+export default connect(mapStateToProps, {getProfiles, getMatches, getAuthUser})(BrowseMode)
