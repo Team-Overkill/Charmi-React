@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ProfileCard from './ProfileCard/ProfileCard';
-import {getProfiles} from '../../ducks/profilesReducer';
-import {getAuthUser} from '../../ducks/userReducer';
-import {getMatches, postMatches} from '../../ducks/matchesReducer';
+// import {getProfiles} from '../../ducks/profilesReducer';
+// import {getAuthUser} from '../../ducks/userReducer';
+// import {getMatches, postMatches} from '../../ducks/matchesReducer';
+import masterReducer, {getProfiles, getAuthUser, getMatches, postMatches} from '../../ducks/masterReducer'
 import './Browse.css';
 import $ from 'jquery';
 import logo from '../../assets/Charmi-logo-large-cyan.png';
@@ -177,11 +178,11 @@ $(document).ready(function () {
 function mapStateToProps(state) {
   console.log(state)
   return {
-    authUser: state.userReducer.authUser,
-    isLoggedIn: state.userReducer.isLoggedIn,
-    profiles: state.profilesReducer.profiles,
-    matches: state.matchesReducer.matches
+    authUser: state.authUser,
+    isLoggedIn: state.isLoggedIn,
+    profiles: state.profiles,
+    matches: state.matches
   }
 }
 
-export default connect(mapStateToProps, {getProfiles, getMatches, getAuthUser})(BrowseMode)
+export default connect(mapStateToProps, {getProfiles, getAuthUser, getMatches, postMatches})(BrowseMode)
