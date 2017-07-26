@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-// import { getMatches } from '../../ducks/matchesReducer';
-// import { getAuthUser } from '../../ducks/userReducer'
-import {getMatches, getAuthUser} from '../../ducks/masterReducer'
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getMatches } from '../../ducks/matchesReducer';
+import { getAuthUser } from '../../ducks/userReducer'
+import axios from 'axios';
 import './Matches.css';
+
+const getConversationsURL = '/api/conversations/'
+const conversationID = 0
 
 export class Matches extends Component {
   constructor(props) {
     super(props)
 
-    
+
     // this.state = {
     //   matches: [{
     //     img: "http://saravazphotography.com/wp-content/uploads/2017/04/Carson-2sq(pp_w280_h280).jpg",
@@ -24,64 +26,64 @@ export class Matches extends Component {
     //   ]
     // }
   }
-     componentDidMount () {
-         this.props.getMatches(this.props.authUser.id)
-      this.props.getAuthUser().then(console.log(this.props.authUser));
-     }
+  componentDidMount() {
+    this.props.getMatches(this.props.authUser.id)
+    this.props.getAuthUser().then(console.log(this.props.authUser));
+  }
 
-      
+
 
   render() {
-  console.log(this.props.matches[1])
+    console.log(this.props.matches[1])
 
 
- 
+
     // let matchSet = this.props.matches[0].map(e => {
     //   if (e.user_1 !== this.props.authUser.id)  {
 
     //   } 
     // })
     // interate over this.props.matches[0] map over it inside map 
+    
 
 
-
-  var userProfiles = this.props.matches[1] || [];
+    var userProfiles = this.props.matches[1] || [];
     const matches = userProfiles
-    // .filter(matches => matches)
+      // .filter(matches => matches)
 
       .map((match, index) => {
 
 
         return (
-          <Link to={`/messages/${match.id}`}>
-            <div key={index} className="matchesWrapper">
+          <Link key={index} to={`/messages/${match.id}`}>
+            <div className="matchesWrapper">
               
               <div>
-              <img src={match.primary_photo}/>
+                <img src={match.primary_photo} />
               </div>
-              
-              <span>{match.first_name}</span>
-              
-                <i className="fa fa-angle-double-right" aria-hidden="true" style={{fontSize: 25, fontWeight: 500, marginRight: 15}}></i>
 
-            </div>  
+              <span>{match.first_name}</span>
+
+              <i className="fa fa-angle-double-right" aria-hidden="true" style={{ fontSize: 25, fontWeight: 500, marginRight: 15 }}></i>
+
+            </div>
           </Link>
         )
       });
 
     return (
       <div>
-      
+
         <header className="matchesHeader">
 
           <Link to={`/browse`}>
-            <i className="fa fa-angle-left" aria-hidden="true" style={{fontSize: 30, fontWeight: 700}}></i>
+            <i className="fa fa-angle-left" aria-hidden="true" style={{ fontSize: 30, fontWeight: 700 }}></i>
           </Link>
 
-            <span>Matches</span>
+          <span>Matches</span>
 
           <Link to={`/messages`}>
-            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{fontSize: 22}}></i>
+            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{ fontSize: 22 }}></i>
           </Link>
 
         </header>
@@ -90,19 +92,19 @@ export class Matches extends Component {
 
       </div>
     )
-}
+  }
 }
 function mapStateToProps(state) {
   console.log(state)
-  if (!state.matches) {
+  if (!state.matchesReducer.matches) {
         return {}
   }
   else {
     return {
-        authUser: state.authUser,
-        matches: state.matches
+        authUser: state.userReducer.authUser,
+        matches: state.matchesReducer.matches
       }
   } 
 }
 
-export default connect(mapStateToProps, {getMatches, getAuthUser})(Matches)
+export default connect(mapStateToProps, { getMatches, getAuthUser })(Matches)

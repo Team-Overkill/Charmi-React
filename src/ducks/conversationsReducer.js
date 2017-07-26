@@ -15,6 +15,7 @@ const GET_CONVERSATION_ID = 'GET_CONVERSATION_ID';
 //Reducer
 
 export default function conversationsReducer( state = initialState, action) {
+
   console.log(action)
   switch (action.type) {
     case `${GET_CONVERSATIONS}_FULFILLED`:

@@ -46,13 +46,13 @@ exports.createMatch = (req, res) => {
   let counter = 0
   myID == u1 ? theirID = u2 : theirID = u1
   req.app.get('db').customMatchQuery(myID).then(allMatches => {
-    console.log(`my id: ${myID}. user_1 id: ${u1}. user_2 id: ${u2}. their id: ${theirID}. allMatches.length: ${allMatches.length}`)
+    // console.log(`my id: ${myID}. user_1 id: ${u1}. user_2 id: ${u2}. their id: ${theirID}. allMatches.length: ${allMatches.length}`)
     if (allMatches.length !== 0) {
       for (let i = 0; i < allMatches.length; i++) {
-        console.log(allMatches[i].user_1)
+        // console.log(allMatches[i].user_1)
         if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
           counter++
-          console.log(`why isn't it hitting here`)
+          // console.log(`why isn't it hitting here`)
           for (let i = 0; i < allMatches.length; i++) {
             if (allMatches[i].user_1 === theirID && allMatches[i].matched === true || allMatches[i].user_2 === theirID && allMatches[i].matched === true) {
               // Do Nothing
@@ -60,9 +60,9 @@ exports.createMatch = (req, res) => {
             }
             else if (allMatches[i].user_1 === theirID || allMatches[i].user_2 === theirID) {
               //PUT
-            console.log(`got to else if ${allMatches[i].id}`)
+            // console.log(`got to else if ${allMatches[i].id}`)
               req.app.get('db').updateMatch(allMatches[i].id).then(newMatch => {
-                console.log(`got promise`)
+                // console.log(`got promise`)
                 res.status(200).send(`Updated match record with the id of: ${allMatches[i].id}`)
               }).catch(err => res.status(500).send(err))
             }
