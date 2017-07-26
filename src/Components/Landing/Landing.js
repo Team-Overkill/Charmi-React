@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import userReducer from '../../ducks/userReducer';
 import './Landing.css';
 
 class Landing extends Component {
@@ -52,8 +51,13 @@ class Landing extends Component {
 function mapStateToProps(state) {
   console.log(state)
   return {
+<<<<<<< HEAD
     isLoggedIn: state.userReducer.isLoggedIn,
     user: state.userReducer.user
+=======
+    user: state.userReducer.user,
+    isLoggedIn: state.userReducer.isLoggedIn
+>>>>>>> master
   }
 }
 

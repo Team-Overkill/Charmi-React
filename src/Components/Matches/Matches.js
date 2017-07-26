@@ -57,7 +57,7 @@ export class Matches extends Component {
         return (
           <Link key={index} to={`/messages/${match.id}`}>
             <div className="matchesWrapper">
-
+              
               <div>
                 <img src={match.primary_photo} />
               </div>
@@ -97,14 +97,14 @@ export class Matches extends Component {
 function mapStateToProps(state) {
   console.log(state)
   if (!state.matchesReducer.matches) {
-    return {}
+        return {}
   }
   else {
     return {
-      authUser: state.userReducer.authUser,
-      matches: state.matchesReducer.matches
-    }
-  }
+        authUser: state.userReducer.authUser,
+        matches: state.matchesReducer.matches
+      }
+  } 
 }
 
 export default connect(mapStateToProps, { getMatches, getAuthUser })(Matches)

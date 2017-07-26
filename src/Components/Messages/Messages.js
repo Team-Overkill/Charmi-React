@@ -140,10 +140,18 @@ class Messages extends Component {
 
 function mapStateToProps(state) {
   console.log(state)
+<<<<<<< HEAD
   return {
     authUser: state.userReducer.authUser,
     conversations: state.conversationsReducer.conversations,
     conversationId: state.conversationsReducer.conversationId
+=======
+    return {
+        authUser: state.userReducer.authUser,
+        conversations: state.conversationsReducer.conversations,
+        conversationId: state.conversationsReducer.conversationId
+      }
+>>>>>>> master
   }
 }
 
