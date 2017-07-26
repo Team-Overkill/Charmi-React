@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { getStateList } from '../../ducks/userReducer';
-import masterReducer, {getStateList} from '../../ducks/masterReducer'
+import { getStateList } from '../../ducks/userReducer';
+
 import './CreateProfile.css';
 /*
 XX about
@@ -241,5 +241,5 @@ class CreateProfile extends Component {
   }
 }
 
-const mapStateToProps = state => {return {stateList: state.stateList}}
+const mapStateToProps = state => {return {stateList: state.userReducer.stateList}}
 export default connect(mapStateToProps, { getStateList })(CreateProfile)

@@ -16,7 +16,7 @@ const initialState = {
 
 const GET_USER = 'GET_USER';
 const GET_USER_PROFILE = 'GET_USER_PROFILE';
-const GET_STATE_LIST = 'GET_STATE_LIST';
+const GET_STATELIST = 'GET_STATELIST';
 const GET_AUTH_USER = 'GET_AUTH_USER';
 
 //Reducer
@@ -28,7 +28,7 @@ export default function userReducer( state = initialState, action) {
       console.log(state)
       return Object.assign({}, state, {authUser: action.payload, isLoggedIn: true});
 
-    case `${GET_STATE_LIST}_FULFILLED`:
+    case `${GET_STATELIST}_FULFILLED`:
       // console.log(action.payload)
       // console.log(state)
       return Object.assign({}, state, {stateList: [...action.payload]})
@@ -58,7 +58,7 @@ export function getStateList() {
     return res.data
   }).catch(err => console.log(err))
   return {
-    type: GET_STATE_LIST,
+    type: GET_STATELIST,
     payload: promise
   }
 }
