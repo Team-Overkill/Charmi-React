@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import io from 'socket.io-client';
-import { getAuthUser } from '../../ducks/userReducer';
-import {getConversations, getConversationId} from '../../ducks/conversationsReducer';
+// import { getAuthUser } from '../../ducks/userReducer';
+// import {getConversations, getConversationId} from '../../ducks/conversationsReducer';
+import {getAuthUser, getConversations, getConversationId} from '../../ducks/masterReducer'
 
 
 import './Messages.css';
@@ -100,9 +101,9 @@ class Messages extends Component {
 function mapStateToProps(state) {
   console.log(state)
     return {
-        authUser: state.userReducer.authUser,
-        conversations: state.conversationsReducer.conversations,
-        conversationId: state.conversationsReducer.conversationId
+        authUser: state.authUser,
+        conversations: state.conversations,
+        conversationId: state.conversationId
       }
   }
 
