@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-// import { getMatches } from '../../ducks/matchesReducer';
-// import { getAuthUser } from '../../ducks/userReducer'
-import {getMatches, getAuthUser} from '../../ducks/masterReducer'
+import { getMatches } from '../../ducks/matchesReducer';
+import { getAuthUser } from '../../ducks/userReducer'
 
 import './Matches.css';
 
@@ -53,8 +52,8 @@ export class Matches extends Component {
 
 
         return (
-          <Link to={`/messages/${match.id}`}>
-            <div key={index} className="matchesWrapper">
+          <Link key={index} to={`/messages/${match.id}`}>
+            <div className="matchesWrapper">
               
               <div>
               <img src={match.primary_photo}/>
@@ -94,13 +93,13 @@ export class Matches extends Component {
 }
 function mapStateToProps(state) {
   console.log(state)
-  if (!state.matches) {
+  if (!state.matchesReducer.matches) {
         return {}
   }
   else {
     return {
-        authUser: state.authUser,
-        matches: state.matches
+        authUser: state.userReducer.authUser,
+        matches: state.matchesReducer.matches
       }
   } 
 }
