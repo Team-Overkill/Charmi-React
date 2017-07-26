@@ -55,8 +55,8 @@ export class Matches extends Component {
 
 
         return (
-          <Link to={`/messages/${match.id}`}>
-            <div key={index} className="matchesWrapper">
+          <Link key={index} to={`/messages/${match.id}`}>
+            <div className="matchesWrapper">
 
               <div>
                 <img src={match.primary_photo} />
