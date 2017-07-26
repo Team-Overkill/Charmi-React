@@ -79,8 +79,9 @@ class BrowseMode extends Component {
   }
 
   handleMatch(userId, id) {
+    const matchObj = { user_1: userId, user_2: id}
     console.log("handleMatch", userId, id);
-    postMatches(userId, id);
+    postMatches(id, matchObj);
     this.nextItem();
   }
 

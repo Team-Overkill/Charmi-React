@@ -80,6 +80,7 @@ exports.createMatch = (req, res) => {
     }
     else {
       // create a new record
+      console.log(`These are the users ${myID, theirID}`)
       req.app.get('db').createMatches(myID, theirID).then(newMatchRecord => {
         res.status(200).send(`new match record was created successfully`)
       }).catch(err => res.status(500).send(err))

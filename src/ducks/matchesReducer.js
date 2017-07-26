@@ -18,6 +18,9 @@ export default function matchesReducer( state = initialState, action) {
       console.log(action.payload)
       return Object.assign({}, state, {matches: action.payload});
 
+      case `${POST_MATCHES}_FULFILLED`:
+      console.log("post matches red.", action.payload)
+      return Object.assign({}, state, {matches: [...action.payload]})
     default: return state;
   }
 }
@@ -35,10 +38,10 @@ export function getMatches(id) {
     payload: promise
   }
 }
-export function postMatches(id) {
+export function postMatches(id, match) {
   console.log('posting match...')
-  const promise = axios.post(`${postMatchesURL}${id}`).then(res => {
-    console.log(id)
+  const promise = axios.post(`${postMatchesURL}${id}`, match).then(res => {
+    console.log(match)
     return res.data 
   }).catch(err => console.log(err))
   return {

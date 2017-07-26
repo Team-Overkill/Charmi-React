@@ -100,11 +100,13 @@ class Messages extends Component {
     const messages = this.state.data.map((e, i) => {
       return (
         <div className="chatswrapper" key={i}>
-          <div className="chats" key={i}>{`${e.first_name}: ${e.message}`}</div>
+          <div className="chats" data-id={e.user_id} key={i}>{`${e.first_name}: ${e.message}`}</div>
         </div>
       )
     })
-
+// $(document).ready(function() {
+//   $('.chats')
+// })
 
 
 
