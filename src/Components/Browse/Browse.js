@@ -32,6 +32,33 @@ class BrowseMode extends Component {
         $('.profileSliderContainer').addClass('profileSliderContainerOpen')
       })
     })
+    $(document).ready(function () {
+  // setInterval(function(){ 
+
+  $('#like').click(function (e) {
+    e.preventDefault();
+    $('.likeNotify').addClass('likedBoxOn');
+    setTimeout(function () {
+
+      // toggle back after 1 second
+      console.log("waiting")
+      $('.likeNotify').removeClass('likedBoxOn')
+    }, 700);
+  })
+  // },5000);
+//   $('#likeNotify').delay(3000).queue(function(){
+//   $(this).addClass("likedBoxOn");
+// });
+
+  $('#nope').click(function (e) {
+    e.preventDefault();
+    $('.nopeNotifyUser').addClass('nopeBoxOn');
+    setTimeout(function () {
+      // toggle back after 1 second
+      $('.nopeNotifyUser').removeClass('nopeBoxOn')
+    }, 700);
+  })
+})
   }
 
   nextItem() {
@@ -52,9 +79,9 @@ class BrowseMode extends Component {
 
   }
 
-  handleMatch(id) {
-    console.log(id);
-    postMatches(id);
+  handleMatch(userId, id) {
+    console.log("handleMatch", userId, id);
+    postMatches(userId, id);
     this.nextItem();
   }
 
@@ -133,7 +160,7 @@ class BrowseMode extends Component {
           {/*<i id="profileCheck" className="fa fa-id-card-o" aria-hidden="true"></i>*/}
           <i id="profileCheck" className="fa fa-angle-up" aria-hidden="true"></i>
 
-          <div id="like" onClick={() => this.handleMatch(this.props.profiles[this.state.nameIndex].id)}
+          <div id="like" onClick={() => this.handleMatch(this.props.authUser.id, this.props.profiles[this.state.nameIndex].id)}
                className="likeButton">
             <i className="fa fa-heart" aria-hidden="true"></i>
 

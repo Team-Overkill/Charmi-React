@@ -62,6 +62,9 @@ export default function masterReducer( state = initialState, action) {
       console.log(state)
       return Object.assign({}, state, {profiles: [...action.payload]});
 
+    case `${POST_MATCHES}_FULFILLED`:
+      return Object.assign({}, state, {matches: [...action.paylod]});
+    
     default: return state;
   }
 }
@@ -105,10 +108,10 @@ export function getMatches(id) {
   }
 }
 
-export function postMatches(id) {
-  console.log('posting match...')
+export function postMatches(myId, id) {
   const promise = axios.post(`${postMatchesURL}${id}`).then(res => {
-    console.log(id)
+    console.log('posting match...', id)
+    console.log(res.data)
     return res.data
   }).catch(err => console.log(err))
   return {
