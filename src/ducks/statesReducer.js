@@ -3,7 +3,7 @@ import axios from 'axios';
 const getStateListURL = '/api/states/'
 
 const initialState = {
-  stateslist: []
+  statesList: []
 }
 
 //Action Types

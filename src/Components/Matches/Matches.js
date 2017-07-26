@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import { getMatches } from '../../ducks/matchesReducer';
-import { getAuthUser } from '../../ducks/userReducer'
+// import { getMatches } from '../../ducks/matchesReducer';
+// import { getAuthUser } from '../../ducks/userReducer'
+import {getMatches, getAuthUser} from '../../ducks/masterReducer'
 
 import './Matches.css';
 
@@ -93,13 +94,13 @@ export class Matches extends Component {
 }
 function mapStateToProps(state) {
   console.log(state)
-  if (!state.matchesReducer.matches) {
+  if (!state.matches) {
         return {}
   }
   else {
     return {
-        authUser: state.userReducer.authUser,
-        matches: state.matchesReducer.matches
+        authUser: state.authUser,
+        matches: state.matches
       }
   } 
 }
