@@ -6,6 +6,8 @@ import './Landing.css';
 
 class Landing extends Component {
   render() {
+    console.log(process.env.PORT)
+
     return (
       <div className="landing-container">
         <div className="landing-logo-container">

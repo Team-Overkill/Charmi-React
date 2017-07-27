@@ -27,7 +27,6 @@ class Messages extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env.PORT)
     socket.on('from:server', d => {
       this.setState({
         data: [...this.state.data, d]
