@@ -31,7 +31,7 @@ class Landing extends Component {
 
         <div className="landing-button-container">
           <button className="landing-btn landing-login-btn">
-            <a href="http://localhost:3005/api/auth">Login with Auth0</a>
+            <a href="/api/auth">Login with Auth0</a>
           </button>
 
           {/*<Link to={`/create-profile/`} className="landing-btn landing-create-profile-btn">*/}
