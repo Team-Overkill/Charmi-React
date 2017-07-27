@@ -24,7 +24,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(cors());
+app.use(cors());
 
 // SOCKET.IO
 io.on('connection', function (socket) {
