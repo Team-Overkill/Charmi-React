@@ -5,11 +5,11 @@ import io from 'socket.io-client';
 import { getAuthUser } from '../../ducks/userReducer';
 import { getConversations, getConversationId } from '../../ducks/conversationsReducer';
 import axios from 'axios';
-
-
 import './Messages.css';
 
-let socket = io(`http://localhost:3005/`)
+
+
+let socket = io(process.env.PORT || 'http://localhost:3005')
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
