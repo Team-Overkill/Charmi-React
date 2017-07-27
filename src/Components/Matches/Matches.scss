@@ -16,10 +16,8 @@ body {
     border-bottom: 3px solid $siteColorTheme;
     margin-bottom: 3px;
     span {
-        margin-left: 47px;
-        margin-right: 47px;
         margin: 6px 47px 0px 47px;
-        color: black;
+        color: $siteColorTheme;
         font-size: 20px;
     }
 }
