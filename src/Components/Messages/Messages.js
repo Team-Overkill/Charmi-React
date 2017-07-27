@@ -9,7 +9,7 @@ import './Messages.css';
 
 
 
-let socket = io(process.env.PORT || 'http://localhost:3005')
+let socket = io(process.env.PORT)
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 

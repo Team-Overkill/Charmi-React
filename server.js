@@ -11,7 +11,7 @@ const express = require('express')
   // , config = require('./config')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , app = express()
-  , server = require('http').createServer(app)
+  , server = require('https').createServer(app)
   , io = require('socket.io')(server)
   , path = require('path');
 
