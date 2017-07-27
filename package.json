@@ -27,6 +27,7 @@
   "devDependencies": {
     "react-scripts": "1.0.10"
   },
+  "homepage": "https://charmi-dating-app.herokuapp.com/",
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
