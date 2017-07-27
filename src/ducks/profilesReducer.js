@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getProfilesURL = 'http://localhost:3005/api/profiles'
+const getProfilesURL = '/api/profiles'
 
 const initialState = {
   profiles: []
