@@ -171,8 +171,8 @@ class CreateProfile extends Component {
             </div>
 
             <div>
-              <select defaultValue='Home State'>
-                <option>Home State</option>
+              <select defaultValue='Home State' style={{width: 100}}>
+                <option>State</option>
                 {statesDroplist}
               </select>
             </div>
@@ -204,7 +204,7 @@ class CreateProfile extends Component {
             </div> */}
             <div>
 
-              <select>
+              <select style={{marginBottom: 7}} >
                 <option>Relationship Readiness</option>
                 <option>Just Looking</option>
               </select>
@@ -225,7 +225,9 @@ class CreateProfile extends Component {
                   {ageDroplist}
                 </select>
               </div>
+
               <br />
+
               <div className="searchRange">
                 <p>Search Range</p>
                 <select defaultValue='default'>
@@ -246,11 +248,14 @@ class CreateProfile extends Component {
               </div>
             </div>
           </div>
+
           <hr />
+
           <div className='actions-wrapper'>
-            <input type='submit' className='action-button' value='Save' onClick={this.handleSaveClick} />
-            <input type='reset' className='action-button' value='Logout' onClick={this.handleCancelClick} />
+            <input type='submit' className='action-button' value='SAVE' onClick={this.handleSaveClick} style={{border: "solid 3px #00CED1" }} />
+            <input type='reset' className='action-button' value='LOGOUT' onClick={this.handleCancelClick} style={{border: "solid 3px #00CED1" }} />
           </div>
+
         </form>
       </div>
     )
