@@ -30,14 +30,21 @@ body {
     justify-content: flex-end;
     border: solid 1px red;
 }
+
+.chatsLeft {
+    float: left;
+}
+.chatsRight {
+    float: right;
+}
 .chats {
     // display: inline-block;
-    float: right;
     padding: 6px 10px;
     background: #EAEAEA;
     border-radius: 10px;
     margin: 5px 7% 5px;
 }
+
 
 
 .footerWrapper {

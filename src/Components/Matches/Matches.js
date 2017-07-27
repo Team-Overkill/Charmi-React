@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getMatches } from '../../ducks/matchesReducer';
+import { getConversationId } from '../../ducks/conversationsReducer'
 import { getAuthUser } from '../../ducks/userReducer'
 import axios from 'axios';
 import './Matches.css';
@@ -9,7 +10,7 @@ import './Matches.css';
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
-export class Matches extends Component {
+class Matches extends Component {
   constructor(props) {
     super(props)
 
@@ -29,13 +30,18 @@ export class Matches extends Component {
   componentDidMount() {
     this.props.getMatches(this.props.authUser.id)
     this.props.getAuthUser().then(console.log(this.props.authUser));
+
+    
   }
 
-
+// linkToMessages(matchId, authId) {
+// const convIdMaker = {user_1: authId, user_2: matchId }
+// this.props.getConversationId(convIdMaker)
+// }this.props.conversationId
 
   render() {
-    console.log(this.props.matches[1])
-
+    console.log(this.props.matches)
+console.log(this.props)
 
 
     // let matchSet = this.props.matches[0].map(e => {
@@ -44,18 +50,27 @@ export class Matches extends Component {
     //   } 
     // })
     // interate over this.props.matches[0] map over it inside map 
-    
+    // onClick={this.linkToMessages(match.id, this.props.authUser.id)}
 
 
     var userProfiles = this.props.matches[1] || [];
+    const convos = this.props.matches[2] 
+
+for (let i = 0; i < userProfiles.length; i++) {
+
+userProfiles[i].convoId = convos[i].id 
+console.log("inside for loop2", convos[i].id)
+}
+    console.log(userProfiles)
     const matches = userProfiles
+    
       // .filter(matches => matches)
 
       .map((match, index) => {
-
+         
 
         return (
-          <Link key={index} to={`/messages/${match.id}`}>
+          <Link key={index}  to={`/messages/${match.convoId}`}>
             <div className="matchesWrapper">
               
               <div>
@@ -102,9 +117,10 @@ function mapStateToProps(state) {
   else {
     return {
         authUser: state.userReducer.authUser,
-        matches: state.matchesReducer.matches
+        matches: state.matchesReducer.matches,
+        conversationId: state.conversationsReducer.conversationId
       }
   } 
 }
 
-export default connect(mapStateToProps, { getMatches, getAuthUser })(Matches)
+export default connect(mapStateToProps, { getMatches, getAuthUser, getConversationId })(Matches)
