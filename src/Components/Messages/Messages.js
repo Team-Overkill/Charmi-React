@@ -10,7 +10,7 @@ import axios from 'axios';
 
 import './Messages.css';
 
-let socket = io(`http://localhost:3005/`)
+let socket = io(`http://192.168.0.105:3005/`)
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
@@ -103,7 +103,7 @@ class Messages extends Component {
     const messages = this.state.data.map((e, i) => {
       return (
         <div className="chatswrapper" key={i}>
-          <div className="chats" data-id={e.user_id} key={i}>{`${e.first_name}: ${e.message}`}</div>
+          <div className="chats" data-id={e.user_id} key={i}>{`${e.first_name } ${e.message}`}</div>
         </div>
       )
     })
@@ -122,9 +122,9 @@ class Messages extends Component {
               <i className="fa fa-angle-left" aria-hidden="true" style={{ fontSize: 30, fontWeight: 700, color: "#00CED1" }}></i>
             </Link>
 
-            <span>Message</span>
+            <span>Messages</span>
 
-            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{ fontSize: 22, color: "#EAEAEA" }}></i>
+            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{ fontSize: 22, color: "#fff" }}></i>
           </header>
         </div>
 
