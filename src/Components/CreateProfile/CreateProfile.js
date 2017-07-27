@@ -134,16 +134,23 @@ class CreateProfile extends Component {
     return (
 
       <div className='main-wrapper'>
+
         <div className="editNav">
-          <header className="createProfileHeader"><span>Edit Profile</span><Link to={`/browse`}>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </Link></header>
+          <header className="createProfileHeader">
+            <span>Edit Profile</span>
+            <Link to={`/browse`}>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </Link>
+          </header>
         </div>
+
         <form className='content-wrapper'>
           <div className='personal-info-wrapper'>
+
             <div>
               <input type='text' placeholder='First Name' onChange={e => this.handleFirstNameInput(e)} />
             </div>
+
             <div className="ageGender">
               <select defaultValue='Age' onChange={e => this.handleAgeSelect(e)}>
                 <option value="Age">Age</option>
@@ -154,33 +161,41 @@ class CreateProfile extends Component {
                 <option>Female</option>
               </select>
             </div>
+
             <div>
               <input type='text' placeholder='Height' onChange={e => this.handleHeightInput(e)} />
             </div>
+
             <div>
               <input type='text' placeholder='Home Town' onChange={e => this.handleHomeTown(e)} />
             </div>
+
             <div>
-              <select defaultValue='Home State'>
-                <option>Home State</option>
+              <select defaultValue='Home State' style={{width: 100}}>
+                <option>State</option>
                 {statesDroplist}
               </select>
             </div>
+
             <div>
               <input type='text' placeholder='Profile Photo' />
             </div>
+
             <div>
               <input type='text' placeholder='Occupation' />
             </div>
+
             <div>
               <input type='text' placeholder='School' />
             </div>
+
             <div>
               <textarea placeholder='About' />
             </div>
-          </div>
-          <div className='preferences'>
 
+          </div>
+
+          <div className='preferences'>
             {/* <div>
               <input type='checkbox' className='preferences-checkbox' /><span className='preferences-checkbox-text'>Search Home Town</span>
             </div>
@@ -188,15 +203,17 @@ class CreateProfile extends Component {
               <input type='checkbox' className='preferences-checkbox' defaultChecked /><span className='preferences-checkbox-text'>Use Location</span>
             </div> */}
             <div>
-              <select>
+
+              <select style={{marginBottom: 7}} >
                 <option>Relationship Readiness</option>
                 <option>Just Looking</option>
               </select>
+              
               <br />
               <hr />
               {/* <div>
               <p className='preferences-text'>Discovery Settings</p>
-            </div>  */}
+              </div>  */}
               <div className="searchRange">
                 <p>Age Range</p>
                 <select defaultValue='Age Start'>
@@ -208,7 +225,9 @@ class CreateProfile extends Component {
                   {ageDroplist}
                 </select>
               </div>
+
               <br />
+
               <div className="searchRange">
                 <p>Search Range</p>
                 <select defaultValue='default'>
@@ -229,11 +248,14 @@ class CreateProfile extends Component {
               </div>
             </div>
           </div>
+
           <hr />
+
           <div className='actions-wrapper'>
-            <input type='submit' className='action-button' value='Save' onClick={this.handleSaveClick} />
-            <input type='reset' className='action-button' value='Logout' onClick={this.handleCancelClick} />
+            <input type='submit' className='action-button' value='SAVE' onClick={this.handleSaveClick} style={{border: "solid 3px #00CED1" }} />
+            <input type='reset' className='action-button' value='LOGOUT' onClick={this.handleCancelClick} style={{border: "solid 3px #00CED1" }} />
           </div>
+
         </form>
       </div>
     )

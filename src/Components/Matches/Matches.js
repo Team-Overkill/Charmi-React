@@ -64,7 +64,7 @@ export class Matches extends Component {
 
               <span>{match.first_name}</span>
 
-              <i className="fa fa-angle-double-right" aria-hidden="true" style={{ fontSize: 25, fontWeight: 500, marginRight: 15 }}></i>
+              <i className="fa fa-angle-right" aria-hidden="true" style={{ fontSize: 30, fontWeight: 700, marginRight: 18, color: "lightgray" }}></i>
 
             </div>
           </Link>
@@ -83,7 +83,7 @@ export class Matches extends Component {
           <span>Matches</span>
 
           <Link to={`/messages`}>
-            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{ fontSize: 22 }}></i>
+            <i className="fa fa-pencil fa-2x" aria-hidden="true" style={{ fontSize: 22, color: "#fff" }}></i>
           </Link>
 
         </header>
