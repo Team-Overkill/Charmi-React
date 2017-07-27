@@ -127,13 +127,13 @@ class BrowseMode extends Component {
           <header className="browseHeader">
 
             <Link to={`/create-profile`}>
-              <i className="fa fa-bars" aria-hidden="true"></i>
+              <i className="fa fa-bars" aria-hidden="true" style={{fontSize: 25}}></i>
             </Link>
 
             <img src={logo} alt="Charmi logo" className="browseNavLogo"/>
 
             <Link to={`/matches`}>
-              <i className="fa fa-comments" aria-hidden="true"></i>
+              <i className="fa fa-comments" aria-hidden="true" style={{fontSize: 25}} ></i>
             </Link>
 
           </header>

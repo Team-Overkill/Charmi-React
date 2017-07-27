@@ -1,39 +1,40 @@
 @import '../../variables.scss';
 body {
     font-family: $mainFont;
+    overflow: hidden;
 }
 
 .matchesHeader {
     height: 7vh;
     width: 100%;
-    background-color: #EAEAEA;
+    background-color: #fff;
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: $siteColorTheme;
     letter-spacing: 2px;
-    border-bottom: 1px solid $siteColorTheme;
+    border-bottom: 3px solid $siteColorTheme;
+    margin-bottom: 3px;
     span {
-        margin-left: 47px;
-        margin-right: 47px;
-        color: black;
-    }
-    a:link,
-    a:visited,
-    a:hover,
-    a:active {
-        text-decoration: none;
-        text-decoration-line: none;
-        text-decoration-style: none;
-        color: inherit;
-        cursor: pointer;
-        font-family: inherit;
+        margin: 6px 47px 0px 47px;
+        color: $siteColorTheme;
+        font-size: 20px;
     }
 }
-
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+}
 
 .matchesWrapper {
-    height: 10vh;
+    height: 12vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -43,24 +44,25 @@ body {
     padding-right: 50px;
 
     img {
-        height: 55px;
-        width: 55px;
+        height: 70px;
+        width: 70px;
         border-radius: 50%;
-        border: solid 1px $siteColorTheme;
-        margin-left: 15px;
+        border: solid 2px $siteColorTheme;
+        margin-left: 18px;
         margin-top: 3px;
+        object-fit: cover;
     }
     
     span {
         height: 100%;
-        margin-right: 200px;
-        // border: solid 1px red;
+        width: 100%;
         display: flex;
         align-items: center;
+        padding-left: 25px;
+        font-size: 20px;
     }
 }
 .matchesWrapper:active {
         background: #EAEAEA;
-        transition: background-color .2s linear;
-        // transition: .1s ease;
+        transition: background-color .4s linear;
     }
