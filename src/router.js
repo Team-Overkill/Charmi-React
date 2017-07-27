@@ -12,7 +12,7 @@ export default (
     <Route
       component={Landing}
       exact
-      path='/'
+      path=''
     />
 
     <Route
