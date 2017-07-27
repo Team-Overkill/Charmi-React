@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: config.sessionSecret
+  secret: process.env.sessionSecret
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
 
 
 //Local
-massive(config.dbURLString).then(db => {
+massive(process.env.connectionString).then(db => {
   app.set('db', db)
   console.log(`connected to db`)
 });
@@ -47,9 +47,9 @@ massive(config.dbURLString).then(db => {
 // });
 
 passport.use(new Auth0Strategy({
-    domain: config.auth0.domain,
-    clientID: config.auth0.clientID,
-    clientSecret: config.auth0.clientSecret,
+    domain: process.env.auth0.domain,
+    clientID: process.env.auth0.clientID,
+    clientSecret: process.env.auth0.clientSecret,
     // callbackURL: config.auth0.callbackURL
     callbackURL: '/api/auth/callback'
   },
