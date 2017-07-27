@@ -217,11 +217,11 @@ class CreateProfile extends Component {
               <div className="searchRange">
                 <p>Age Range</p>
                 <select defaultValue='Age Start'>
-                  <option value="Age Start">Age Start</option>
+                  <option value="Age Start">Age Min</option>
                   {ageDroplist}
                 </select>
                 <select defaultValue='Age End'>
-                  <option value="Age End">Age End</option>
+                  <option value="Age End">Age Max</option>
                   {ageDroplist}
                 </select>
               </div>
