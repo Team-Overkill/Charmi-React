@@ -47,9 +47,9 @@ massive(process.env.connectionString).then(db => {
 // });
 
 passport.use(new Auth0Strategy({
-    domain: process.env.auth0.domain,
-    clientID: process.env.auth0.clientID,
-    clientSecret: process.env.auth0.clientSecret,
+    domain: process.env.domain,
+    clientID: process.env.clientID,
+    clientSecret: process.env.clientSecret,
     // callbackURL: config.auth0.callbackURL
     callbackURL: '/api/auth/callback'
   },
