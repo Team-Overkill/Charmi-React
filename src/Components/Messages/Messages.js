@@ -9,7 +9,7 @@ import './Messages.css';
 
 
 
-let socket = io(process.env.PORT)
+let socket = io(process.env.PORT || 'https://charmi-dating-app.herokuapp.com/')
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
@@ -27,6 +27,7 @@ class Messages extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env.PORT)
     socket.on('from:server', d => {
       this.setState({
         data: [...this.state.data, d]
