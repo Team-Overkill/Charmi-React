@@ -28,8 +28,11 @@ app.use(cors());
 
 // SOCKET.IO
 io.on('connection', function (socket) {
+  console.log(`console: 1`)
   socket.on('from:react', function (data) {
+  console.log(`console: 2 ${data}`)
     io.emit('from:server', data)
+  console.log(`console: 3`)
   });
 });
 
