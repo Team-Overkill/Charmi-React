@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
 import { getAuthUser } from '../../ducks/userReducer';
 import { getConversations, getConversationId } from '../../ducks/conversationsReducer';
+import {updateMatchId} from '../../ducks/matchesReducer';
 import axios from 'axios';
 
 
@@ -15,10 +16,10 @@ const conversationID = 0
 
 
 class Messages extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      data: [{first_name: 'Tom', message: 'Hey' }],
+      data: [],
       userInput: '',
       conversation: []
     }
@@ -57,14 +58,16 @@ class Messages extends Component {
     console.log(`my id should be ${myID}`)
     // let theirId = 2
     let theirId = this.props.match.params.id /1
+    // let theirId = this.props.matchId /1
     console.log(`their id should be ${JSON.stringify(theirId)}`)
     let ids = {
       "user_1": myID
       , "user_2": theirId
     }
-    const promise = axios.put(getConversationsURL, ids).then(res => {
-      console.log(`promise response log ${res.data}`)
-      this.conversationID = res.data[0].id
+    // const promise = axios.put(getConversationsURL, ids).then(res => {
+    //   console.log(`promise response log ${res.data}`)
+      // this.conversationID = res.data[0].id
+      this.conversationID = this.props.match.params.id
       console.log(`conversation id should be ${this.conversationID}`)
       const newpromise = axios.get(`${getConversationsURL}${this.conversationID}`).then(conv => {
         console.log(conv)
@@ -72,7 +75,7 @@ class Messages extends Component {
           data: conv.data
         })
         console.log(this.state.conversation)
-      })
+      // })
     })//.catch(console.log(`doesn't exist`))
   }
 
@@ -145,10 +148,11 @@ function mapStateToProps(state) {
     return {
         authUser: state.userReducer.authUser,
         conversations: state.conversationsReducer.conversations,
-        conversationId: state.conversationsReducer.conversationId
+        conversationId: state.conversationsReducer.conversationId,
+        matchId: state.matchesReducer.updateMatchId
       }
   
 }
 
 
-export default connect(mapStateToProps, { getConversations, getConversationId, getAuthUser })(Messages)
+export default connect(mapStateToProps, { getConversations, getConversationId, getAuthUser, updateMatchId })(Messages)
