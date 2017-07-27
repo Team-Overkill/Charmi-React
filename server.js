@@ -12,11 +12,13 @@ const express = require('express')
   // , remoteUrl = 'https://charmi-server.herokuapp.com'
   , app = express()
   , server = require('http').createServer(app)
-  , io = require('socket.io')(server);
+  , io = require('socket.io')(server)
+  , path = require('path');
 
 app.set('port', process.env.PORT || config.port)
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -93,6 +95,10 @@ passport.deserializeUser(function (userB, done) {
     done(null, userC);
 //move done() inside of promise .then or else it will fire before it gets a response
 //   })
+});
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/api/auth', passport.authenticate('auth0'));
