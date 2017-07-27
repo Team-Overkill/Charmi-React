@@ -137,7 +137,7 @@ class CreateProfile extends Component {
 
         <div className="editNav">
           <header className="createProfileHeader">
-            <span>Edit Profile</span>
+            <div id='title'>Edit Profile</div>
             <Link to={`/browse`}>
               <i className="fa fa-angle-right" aria-hidden="true"></i>
             </Link>
