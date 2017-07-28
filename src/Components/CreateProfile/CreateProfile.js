@@ -137,10 +137,10 @@ class CreateProfile extends Component {
 
         <div className="editNav">
           <header className="createProfileHeader">
-            <span>Edit Profile</span>
             <Link to={`/browse`}>
-              <i className="fa fa-angle-right" aria-hidden="true"></i>
+              <i className="fa fa-angle-left" aria-hidden="true"></i>
             </Link>
+            <div id='title'>Edit Profile</div>
           </header>
         </div>
 
@@ -217,11 +217,11 @@ class CreateProfile extends Component {
               <div className="searchRange">
                 <p>Age Range</p>
                 <select defaultValue='Age Start'>
-                  <option value="Age Start">Age Start</option>
+                  <option value="Age Start">Age Min</option>
                   {ageDroplist}
                 </select>
                 <select defaultValue='Age End'>
-                  <option value="Age End">Age End</option>
+                  <option value="Age End">Age Max</option>
                   {ageDroplist}
                 </select>
               </div>
@@ -252,8 +252,8 @@ class CreateProfile extends Component {
           <hr />
 
           <div className='actions-wrapper'>
-            <input type='submit' className='action-button' value='SAVE' onClick={this.handleSaveClick} style={{border: "solid 3px #00CED1" }} />
-            <input type='reset' className='action-button' value='LOGOUT' onClick={this.handleCancelClick} style={{border: "solid 3px #00CED1" }} />
+            <input type='submit' className='action-button' value='SAVE' onClick={this.handleSaveClick} style={{border: "solid 3px #00CED1", borderRadius: 0 }} />
+            <input type='reset' className='action-button' value='LOGOUT' onClick={this.handleCancelClick} style={{border: "solid 3px #00CED1", borderRadius: 0 }} />
           </div>
 
         </form>
