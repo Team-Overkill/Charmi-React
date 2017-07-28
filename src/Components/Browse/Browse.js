@@ -140,11 +140,11 @@ class BrowseMode extends Component {
         </div>
 
         <div className="likeNotify">
-          Liked
+          <i className="fa fa-heart fa-5x" aria-hidden="true"></i>
         </div>
 
         <div className="nopeNotifyUser">
-          Nope
+          <i className="fa fa-times fa-5x" aria-hidden="true"></i>
         </div>
 
         <div>
