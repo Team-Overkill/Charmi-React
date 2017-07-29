@@ -21,9 +21,9 @@ The JSON file shows the following tech installed and required.  </br>
 
 
 Section 2:  Team and Responsibilities</br>
-Paul Murff - Front end skeleton overall app build with routing and all pages laid out, browse page, profile info section, jQuery</br> 
-Bobby Steed - Overall app design (original artwork and design) with input from team for styling throughout, Redux setup, Auth0 login and built login page with cool video background.  </br>  
-Jodi Parker - Backend SQL tables creation, server/endpoints/api creation, input for styles, profiles data populated </br>
+Paul Murff - Front end skeleton overall app build with routing and all pages laid out, browse page, profile info section, jQuery</br> </br>
+Bobby Steed - Overall app design (original artwork and design) with input from team for styling throughout, Redux setup, Auth0 login and built login page with cool video background </br>  </br>
+Jodi Parker - Backend SQL tables creation, server/endpoints/api creation, input for styles, profiles data populated </br></br>
 Kellen Pugmire - Styling some of pages, chat with sockets.io </br>
 
 
