@@ -30,7 +30,7 @@ The JSON file shows the following tech installed and required.  </br>
 ### Section 3: App Screen Shots and Functionality Description</br></br>
 a.Login Screen: http://imgur.com/vgPFUFP (original design with video in background)</br>
 b.Auth0 Selection: http://imgur.com/aXUL6Nh  (User profiles are created on login through any of these options)</br>
-c.Browse Screen: http://imgur.com/7PBxthh  (All profiles available are loaded with map to browse one at a time)</br>
+c.Browse Screen: ![pasted image at 2017_07_29 02_32 pm](https://user-images.githubusercontent.com/25558342/28748404-5bbafcfc-7474-11e7-9294-3699481117ca.png) http://imgur.com/7PBxthh  (All profiles available are loaded with map to browse one at a time)</br>
 d.Profile Info Screen: http://imgur.com/THMDl4m (User ability to see more info by viewing a profile info page by hitting the small up arrow in between the like(heart) and dislike(X) which is loaded with jQuery and dynamic info with React component map iteration) </br>
 e.User feedback for 'liked' http://imgur.com/w4uhA3c (heart seen after selecting the heart button which also takes you directly to another profile after 900 miliseconds)</br>
 f.Edit Search and User Profile: http://imgur.com/fSrzJ7o (not fully functional yet for editing and so forth but wired to do so) </br>
