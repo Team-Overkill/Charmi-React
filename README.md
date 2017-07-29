@@ -7,7 +7,7 @@ About the Project
 
 The Charmi Dating app is a mobile friendly app designed for iPhone 6 Plus in mind.  Users can browse profile photos and profile info pages to then like or dislike them.  If they are liked back by another user their profile is moved to the matches screen.  Once a match both users can open a chat and chat in real time. </br> 
 
-Section 1:  Tech Used</br>
+### Section 1:  Tech Used</br></br>
 The JSON file shows the following tech installed and required.  </br>
 "axios"</br>
 "express-session"</br>
@@ -20,14 +20,14 @@ The JSON file shows the following tech installed and required.  </br>
 "socket.io"</br>
 
 
-Section 2:  Team and Responsibilities</br>
-Paul Murff - Front end skeleton overall app build with routing and all pages laid out, browse page, profile info section, jQuery</br> </br>
-Bobby Steed - Overall app design (original artwork and design) with input from team for styling throughout, Redux setup, Auth0 login and built login page with cool video background </br>  </br>
-Jodi Parker - Backend SQL tables creation, server/endpoints/api creation, input for styles, profiles data populated </br></br>
-Kellen Pugmire - Styling some of pages, chat with sockets.io </br>
+### Section 2:  Team and Responsibilities</br></br>
+-Paul Murff - Front end skeleton overall app build with routing and all pages laid out, browse page, profile info section, jQuery</br> 
+-Bobby Steed - Overall app design (original artwork and design) with input from team for styling throughout, Redux setup, Auth0 login and built login page with cool video background </br> 
+-Jodi Parker - Backend SQL tables creation, server/endpoints/api creation, input for styles, profiles data populated </br>
+-Kellen Pugmire - Styling some of pages, chat with sockets.io </br></br>
 
 
-Section 3: App Screen Shots and Functionality Description</br>
+### Section 3: App Screen Shots and Functionality Description</br></br>
 a.Login Screen: http://imgur.com/vgPFUFP  (original design with video in background)</br>
 b.Auth0 Selection: http://imgur.com/aXUL6Nh  (User profiles are created on login through any of these options)</br>
 c.Browse Screen: http://imgur.com/7PBxthh  (All profiles available are loaded with map to browse one at a time)</br>
