@@ -7,17 +7,17 @@ About the Project
 
 The Charmi Dating app is a mobile friendly app designed for iPhone 6 Plus in mind.  Users can browse profile photos and profile info pages to then like or dislike them.  If they are liked back by another user their profile is moved to the matches screen.  Once a match both users can open a chat and chat in real time. </br> 
 
-Section 1:  Tech Used
-The JSON file shows the following tech installed and required.  
-"axios"
-"express-session"
-"jquery"
-"massive"
-"passport-auth0"
-"react"
-"redux"
-"redux-promise-middleware"
-"socket.io":
+Section 1:  Tech Used</br>
+The JSON file shows the following tech installed and required.  </br>
+"axios"</br>
+"express-session"</br>
+"jquery"</br>
+"massive"</br>
+"passport-auth0"</br>
+"react"</br>
+"redux"</br>
+"redux-promise-middleware"</br>
+"socket.io"</br>
 
 
 Section 2:  Team and Responsibilities
