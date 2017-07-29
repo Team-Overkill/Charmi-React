@@ -28,7 +28,7 @@ The JSON file shows the following tech installed and required.  </br>
 
 
 ### Section 3: App Screen Shots and Functionality Description</br></br>
-a.Login Screen: <img src="http://imgur.com/vgPFUFP"/>  (original design with video in background)</br>
+a.Login Screen: http://imgur.com/vgPFUFP (original design with video in background)</br>
 b.Auth0 Selection: http://imgur.com/aXUL6Nh  (User profiles are created on login through any of these options)</br>
 c.Browse Screen: http://imgur.com/7PBxthh  (All profiles available are loaded with map to browse one at a time)</br>
 d.Profile Info Screen: http://imgur.com/THMDl4m (User ability to see more info by viewing a profile info page by hitting the small up arrow in between the like(heart) and dislike(X) which is loaded with jQuery and dynamic info with React component map iteration) </br>
