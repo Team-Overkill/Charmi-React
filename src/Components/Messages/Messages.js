@@ -11,7 +11,7 @@ import config from '../../reactConfig'
 
 import './Messages.css';
 
-let socket = io(`${config.backendURL}:${config.port}/`)
+let socket = io(`http://${config.backendURL}:${config.port}/`)
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
