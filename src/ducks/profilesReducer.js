@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../reactConfig'
 
-const getProfilesURL = 'http://localhost:3005/api/profiles'
+const getProfilesURL = `http://${config.backendURL}:${config.port}/api/profiles`
 
 const initialState = {
   profiles: []

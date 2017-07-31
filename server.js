@@ -53,7 +53,7 @@ passport.use(new Auth0Strategy({
     domain: config.auth0.domain,
     clientID: config.auth0.clientID,
     clientSecret: config.auth0.clientSecret,
-    callbackURL: `http://localhost:${config.port}/api/auth/callback`
+    callbackURL: `http://${config.serverURL}:${config.port}/api/auth/callback`
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
     let db = app.get('db')
@@ -102,7 +102,7 @@ app.get('/api/auth', passport.authenticate('auth0'));
 
 app.get('/api/auth/callback',
   passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/browse' //frontend port
+    successRedirect: `http://${config.frontEndURL}:${config.frontEndPort}/browse` //frontend port
   }),
   function (req, res) {
 

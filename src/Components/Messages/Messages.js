@@ -6,11 +6,12 @@ import { getAuthUser } from '../../ducks/userReducer';
 import { getConversations, getConversationId } from '../../ducks/conversationsReducer';
 import {updateMatchId} from '../../ducks/matchesReducer';
 import axios from 'axios';
+import config from '../../reactConfig'
 
 
 import './Messages.css';
 
-let socket = io(`http://192.168.0.105:3005/`)
+let socket = io(`http://${config.backendURL}:${config.port}/`)
 const getConversationsURL = '/api/conversations/'
 const conversationID = 0
 
